@@ -8,7 +8,6 @@ public class Course implements Serializable {
 
 	private long courseCode;
 	private String courseName;
-	private String courseSurname;
 	private Date startDate;
 	private Date endDate;
 	private double courseCost;
@@ -29,14 +28,6 @@ public class Course implements Serializable {
 
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
-	}
-
-	public String getCourseSurname() {
-		return courseSurname;
-	}
-
-	public void setCourseSurname(String courseSurname) {
-		this.courseSurname = courseSurname;
 	}
 
 	public Date getStartDate() {
@@ -81,9 +72,9 @@ public class Course implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Course [courseCode=" + courseCode + ", courseName=" + courseName + ", courseSurname=" + courseSurname
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", courseCost=" + courseCost
-				+ ", courseComment=" + courseComment + ", courseRoom=" + courseRoom + "]";
+		return "Course [courseCode=" + courseCode + ", courseName=" + courseName + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", courseCost=" + courseCost + ", courseComment=" + courseComment
+				+ ", courseRoom=" + courseRoom + "]";
 	}
 
 }
