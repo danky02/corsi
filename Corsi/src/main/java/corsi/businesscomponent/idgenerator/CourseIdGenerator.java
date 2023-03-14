@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import corsi.architetture.dao.DAOConstants;
-import corsi.architetture.dao.DAOException;
-import corsi.architetture.dbaccess.DABccess;
+import corsi.architecture.dao.DAOConstants;
+import corsi.architecture.dao.DAOException;
+import corsi.architecture.dbaccess.DBAccess;
 
 public class CourseIdGenerator implements DAOConstants {
 	private static Connection conn;
@@ -29,7 +29,7 @@ public class CourseIdGenerator implements DAOConstants {
 	public long getNextId() throws DAOException, ClassNotFoundException, IOException {
 		long id = 0;
 		try {
-		 	conn = DABccess.getConnection();
+		 	conn = DBAccess.getConnection();
 		 	stmt = conn.createStatement();
 		 	rs = stmt.executeQuery(SELECT_COURSE_SEQ);
 		 	rs.next();

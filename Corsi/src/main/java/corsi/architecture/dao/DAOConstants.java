@@ -1,4 +1,4 @@
-package corsi.architetture.dao;
+package corsi.architecture.dao;
 
 public interface DAOConstants {
 	

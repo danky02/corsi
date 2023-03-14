@@ -1,4 +1,4 @@
-package corsi.architetture.dao;
+package corsi.architecture.dao;
 
 import java.sql.SQLException;
 

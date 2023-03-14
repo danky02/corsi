@@ -1,4 +1,4 @@
-package corsi.architetture.dbaccess;
+package corsi.architecture.dbaccess;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,9 +7,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import corsi.architetture.dao.DAOException;
+import corsi.architecture.dao.DAOException;
 
-public class DABccess {
+public class DBAccess {
 	private static Connection conn;
 	
 	public static synchronized Connection getConnection() throws DAOException, ClassNotFoundException, IOException {
