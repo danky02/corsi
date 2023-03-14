@@ -11,19 +11,41 @@ private static final long serialVersionUID = 1410261715974377560L;
 	private boolean educational_background;
 	
 	public Student() {
+		
 	}
-	public String getStudent_name() {
-		return student_name;
+	
+	public String getName() {
+		return this.student_name;
 	}
-	public String getStudent_surname() {
-		return student_surname;
+	
+	public void setName(String n) {
+		this.student_name = n;
 	}
-	public long getStudent_code() {
-		return student_code;
+	
+	public String getSurname() {
+		return this.student_surname;
 	}
-	public boolean isEducational_background() {
-		return educational_background;
+	
+	public void setSurname(String s) {
+		this.student_surname = s;
 	}
+	
+	public long getCode() {
+		return this.student_code;
+	}
+	
+	public void setCode(long code) {
+		this.student_code = code;
+	}
+	
+	public boolean getBackground() {
+		return this.educational_background;
+	}
+	public void setBackground(boolean b) {
+		this.educational_background = b;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Studente [student_name=" + student_name + ", student_surname=" + student_surname + ", student_code="
