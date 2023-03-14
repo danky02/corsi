@@ -13,6 +13,15 @@ public class Course implements Serializable {
 	private double courseCost;
 	private String courseComment;
 	private String courseRoom;
+	private long professorCode;
+
+	public long getProfessorCode() {
+		return professorCode;
+	}
+
+	public void setProfessorCode(long professorCode) {
+		this.professorCode = professorCode;
+	}
 
 	public long getCourseCode() {
 		return courseCode;
