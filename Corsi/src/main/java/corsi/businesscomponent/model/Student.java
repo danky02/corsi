@@ -1,6 +1,8 @@
 package corsi.businesscomponent.model;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable{
 private static final long serialVersionUID = 1410261715974377560L;
 	
 	private String student_name;
