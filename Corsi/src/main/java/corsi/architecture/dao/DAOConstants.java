@@ -6,7 +6,7 @@ public interface DAOConstants {
 	final String SELECT_STUDENT = "Select * from student";
 	final String SELECT_PROFESSOR = "Select * from professor";
 	
-	final String UPDATE_COURSE = "Update course set course_name = ?, course_surname = ?, start_date = ?, end_date = ?, course_cost = ?, course_comment = ?, course_room = ? where course_code = ?";
+	final String UPDATE_COURSE = "Update course set course_name = ?, start_date = ?, end_date = ?, course_cost = ?, course_comment = ?, course_room = ?, professor_code = ? where course_code = ?";
 	final String UPDATE_STUDENT = "Update student set student_name = ?, student_surname = ?, educational_background = ? where student_code = ?";
 	final String UPDATE_PROFESSOR = "Update professor set professor_name = ?, professor_surname = ?, professor_cv = ? where professor_code = ?";
 	final String UPDATE_ADMIN = "Update admin set admin_name = ?, admin_surname = ? where admin_code = ?";
