@@ -1,20 +1,61 @@
 package corsi.businesscomponent;
 
-import corsi.architetture.dao.DAOException;
-import corsi.architetture.dbaccess.DABccess;
-
+import java.io.IOException;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import corsi.architecture.dao.DAOException;
+import corsi.architecture.dbaccess.DBAccess;
+import corsi.businesscomponent.model.Professor;
 
 public class ProfessorBC {
-	
 	private Connection conn;
 	private ProfessorDAO pDAO;
-	
-	
-	public ProfessorBC() throws DAOException {
+
+	public ProfessorBC() throws DAOException, ClassNotFoundException, IOException {
+		conn = DBAccess.getConnection();
+		pDAO = ProfessorDAO.getFactory();
+	}
+
+	public void create(Professor professor) throws DAOException {
 		try {
-			pDAO.create(conn, ProfessorDAO);
+			pDAO.create(conn, professor);
 		} finally {
-			DABccess.closeConnection();
+			DBAccess.closeConnection();
 		}
 	}
+
+	public void update(Professor professor) throws DAOException {
+		try {
+			pDAO.update(conn, professor);
+		} finally {
+			DBAccess.closeConnection();
+		}
+	}
+
+	public void deleteByCode(long code) throws DAOException {
+		try {
+			pDAO.deleteByCode(conn, code);
+		} finally {
+			DBAccess.closeConnection();
+
+		}
+	}
+
+	public void getByCode(long code) throws DAOException {
+		try {
+			pDAO.getByCode(conn, code);
+		} finally {
+			DBAccess.closeConnection();
+
+		}
+	}
+
+	public List<Professor> getAll() {
+		List<Professor> professorList = new ArrayList<>();
+		professorList = pDAO.getAll();
+		return professorList;
+	}
+
 }
