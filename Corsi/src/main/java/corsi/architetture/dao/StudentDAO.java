@@ -95,7 +95,7 @@ public class StudentDAO implements DAOConstants {
 	}
 	
 	public int getCount(Connection conn) throws SQLException {
-		PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM STUDENT"); //SELECT_STUDENT_COUNT);
+		PreparedStatement stmt = conn.prepareStatement(SELECT_STUDENT_COUNT);
 		ResultSet rs = stmt.executeQuery();
 
 		int count = 0;
