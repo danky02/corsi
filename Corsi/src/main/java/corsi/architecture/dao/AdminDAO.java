@@ -16,11 +16,11 @@ public class AdminDAO implements DAOConstants {
 		return new AdminDAO();
 	}
 
-	public void delete(Connection conn, Admin entity) throws DAOException {
+	public void deleteByCode(Connection conn, long code) throws DAOException {
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(DELETE_ADMIN);
-			ps.setLong(1, entity.getAdminCode());
+			ps.setLong(1, code);
 			ps.execute();
 			conn.commit();
 
@@ -44,12 +44,12 @@ public class AdminDAO implements DAOConstants {
 		}
 	}
 
-	public Admin getByCode(Connection conn, long id) throws DAOException {
+	public Admin getByCode(Connection conn, long code) throws DAOException {
 		Admin admin = null;
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(SELECT_ADMIN_BY_CODE);
-			ps.setLong(1, id);
+			ps.setLong(1, code);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				admin = new Admin();

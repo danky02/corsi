@@ -31,15 +31,15 @@ class AdminTest {
 	@Order(1)
 	void testUpdate() {
 		try {
-			
+			System.out.println(AdminDAO.getFactory().getByCode(conn, 69420));
 			admin = new Admin();
-			admin.setAdminCode(4);
+			admin.setAdminCode(69420);
 			admin.setAdminName("Giovanni");
 			admin.setAdminSurname("Grasso");
 			admin.setAdminUsername("SoggyKey6086");
 			AdminDAO.getFactory().update(conn, admin);
 			System.out.println("aggiornato Admin");
-			System.out.println(admin);
+			System.out.println(AdminDAO.getFactory().getByCode(conn, 69420));
 		} catch (Exception exc) {
 			exc.printStackTrace();
 			fail("Update fallito: " + exc.getMessage());
@@ -51,8 +51,8 @@ class AdminTest {
 	void testGetByCode() {
 		try {
 			System.out.println("inizio getByCode");
-			AdminDAO.getFactory().getByCode(conn, 4);
-			System.out.println(admin);
+			AdminDAO.getFactory().getByCode(conn, 69420);
+			System.out.println(AdminDAO.getFactory().getByCode(conn, 69420));
 		} catch (DAOException exc) {
 			exc.printStackTrace();
 			fail("getByCode fallito: " + exc.getMessage());
@@ -62,7 +62,7 @@ class AdminTest {
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		try {
-			AdminDAO.getFactory().delete(conn, admin);
+//			AdminDAO.getFactory().deleteByCode(conn, 69420);
 			System.out.println("Eliminato articolo");
 			DBAccess.closeConnection();
 		} catch (DAOException exc) {

@@ -43,9 +43,9 @@ public class ProfessorBC {
 		}
 	}
 
-	public void getByCode(long code) throws DAOException {
+	public Professor getByCode(long code) throws DAOException {
 		try {
-			pDAO.getByCode(conn, code);
+			return pDAO.getByCode(conn, code);
 		} finally {
 			DBAccess.closeConnection();
 

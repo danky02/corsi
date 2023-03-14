@@ -66,13 +66,15 @@ public class CourseDAO implements DAOConstants {
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(UPDATE_COURSE);
+			
 			ps.setString(1, entity.getCourseName());
-			rowSet.updateDate(2, new java.sql.Date(entity.getStartDate().getTime()));
-			rowSet.updateDate(3, new java.sql.Date(entity.getEndDate().getTime()));
+			ps.setDate(2, new java.sql.Date(entity.getStartDate().getTime()));
+			ps.setDate(3, new java.sql.Date(entity.getEndDate().getTime()));
 			ps.setDouble(4, entity.getCourseCost());
 			ps.setString(5, entity.getCourseComment());
 			ps.setString(6, entity.getCourseRoom());
 			ps.setLong(7, entity.getProfessorCode());
+			ps.setLong(8, entity.getCourseCode());
 			ps.execute();
 			conn.commit();
 		} catch (SQLException sql) {

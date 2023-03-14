@@ -43,7 +43,7 @@ class CourseTest {
 		try {
 			CourseDAO.getFactory().create(conn, course);
 			System.out.println("creato corso");
-			System.out.println(course);
+			System.out.println(CourseDAO.getFactory().getByCode(conn, 5));
 		} catch (DAOException exc) {
 			exc.printStackTrace();
 			fail("Crate fallito: " + exc.getMessage());
@@ -54,8 +54,9 @@ class CourseTest {
 	@Order(2)
 	void testUpdate() {
 		try {
+			System.out.println("inizio Aggiornamente");
 			course = new Course();
-			course.setCourseCode(3);
+			course.setCourseCode(5);
 			course.setCourseName("HTML 5");
 			course.setStartDate(new GregorianCalendar(2023, 9, 20).getTime());
 			course.setEndDate(new GregorianCalendar(2023, 9, 20).getTime());
@@ -64,8 +65,8 @@ class CourseTest {
 			course.setCourseRoom("B50");
 			course.setProfessorCode(3);
 			CourseDAO.getFactory().update(conn, course);
-			System.out.println("aggiornato Course");
-			System.out.println(course);
+			System.out.println("fine aggiornamento");
+			System.out.println(CourseDAO.getFactory().getByCode(conn, 5));
 		} catch (Exception exc) {
 			exc.printStackTrace();
 			fail("Update fallito: " + exc.getMessage());
@@ -78,7 +79,7 @@ class CourseTest {
 		try {
 			System.out.println("inizio getByCode");
 			CourseDAO.getFactory().getByCode(conn, 5);
-			System.out.println(course);
+			System.out.println(CourseDAO.getFactory().getByCode(conn, 5));
 		} catch (DAOException exc) {
 			exc.printStackTrace();
 			fail("getByCode fallito: " + exc.getMessage());
