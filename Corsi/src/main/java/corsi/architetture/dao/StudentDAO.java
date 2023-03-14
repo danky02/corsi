@@ -79,7 +79,6 @@ public class StudentDAO implements DAOConstants {
 	}
 	
 	public List<Student> getAll(Connection conn) throws SQLException {
-		
 		ArrayList<Student> students = new ArrayList<Student>();
 		rowSet.setCommand(SELECT_STUDENT);
 		rowSet.execute(conn);

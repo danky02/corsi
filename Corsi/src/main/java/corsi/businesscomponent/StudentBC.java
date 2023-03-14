@@ -3,6 +3,8 @@ package corsi.businesscomponent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import corsi.architetture.dao.StudentDAO;
 import corsi.architecture.dbaccess.DBAccess;
@@ -50,28 +52,37 @@ public class StudentBC {
 	
 	// getByCode(code: long) Student
 	public Student getByCode(long code) throws SQLException {
+		Student result = null;
 		try {
-			return StudentDAO.getFactory().getByCode(conn, code);
+			result = StudentDAO.getFactory().getByCode(conn, code);
 		}finally {
 			DBAccess.closeConnection();
 		}
+		
+		return result;
 	}
 	
 	// getAll() list<Student>
-	public void getAll(Student student) throws SQLException {
+	public List<Student> getAll(Student student) throws SQLException {
+		List<Student> result = null;
 		try {
-			StudentDAO.getFactory().getAll(conn);
+			result = StudentDAO.getFactory().getAll(conn);
 		}finally {
 			DBAccess.closeConnection();
 		}
+		
+		return result;
 	}
 	
 	// getCount() int
 	public int getCount() throws SQLException {
+		int result = -1;
 		try {
-			return StudentDAO.getFactory().getCount(conn);
+			result = StudentDAO.getFactory().getCount(conn);
 		}finally {
 			DBAccess.closeConnection();
 		}
+		
+		return result;
 	}
 }
