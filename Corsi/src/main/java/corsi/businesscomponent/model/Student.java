@@ -44,7 +44,22 @@ private static final long serialVersionUID = 1410261715974377560L;
 	public void setBackground(boolean b) {
 		this.educational_background = b;
 	}
+	
+	
 
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Student)) return false;
+		Student b = (Student)obj;
+		
+		if (!(this.student_name.equals(b.getName()))) return false;
+		if (!(this.student_surname.equals(b.getSurname()))) return false;
+		if (this.student_code != b.getCode()) return false;
+		if (this.educational_background != b.getBackground()) return false;
+		
+		return true;
+	}
 
 	@Override
 	public String toString() {
@@ -53,4 +68,3 @@ private static final long serialVersionUID = 1410261715974377560L;
 	}
 	
 }
-
