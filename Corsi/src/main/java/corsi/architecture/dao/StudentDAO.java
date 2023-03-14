@@ -1,4 +1,4 @@
-package corsi.architetture.dao;
+package corsi.architecture.dao;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -12,7 +12,6 @@ import java.util.List;
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
 
-import corsi.architecture.dao.DAOConstants;
 import corsi.businesscomponent.model.Student;
 
 public class StudentDAO implements DAOConstants {
