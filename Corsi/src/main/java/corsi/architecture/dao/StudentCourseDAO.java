@@ -16,22 +16,14 @@ public class StudentCourseDAO implements DAOConstants {
 			rowSet = RowSetProvider.newFactory().createCachedRowSet();
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
-
 		}
 	}
 
 	public StudentCourseDAO getFactory() throws DAOException {
-		return StudentCourseDAO;
+		return new StudentCourseDAO();
 	}
 
-	public StudentCourseDAO() throws DAOException {
-		try {
-			RowSetProvider.newFactory().createCachedRowSet();
-		} catch (SQLException sql) {
-			throw new DAOException(sql);
-		}
-	}
-
+	
 	public void create(Connection conn, StudentCourse entity) throws DAOException {
 		try {
 			rowSet.setCommand(SELECT_STUDENT);

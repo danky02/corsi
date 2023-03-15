@@ -1,6 +1,11 @@
 package corsi.businesscomponent;
 
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+
 import corsi.architecture.dao.CourseDAO;
 import corsi.architecture.dao.DAOException;
 import corsi.architecture.dbaccess.DBAccess;
@@ -40,16 +45,22 @@ public class CourseBC {
 	}
 
 	public Course getByCode(long code) throws DAOException {
-		try {
-			cDAO.getByCode(conn, code);
+		Course course= null;
+		try {	
+			course= cDAO.getByCode(conn, code);
 		} finally {
 			DBAccess.closeConnection();
 		}
+		return course;
 	}
 
-	public List<Course> getAll() {
-		List<Course> courseList = new ArrayList<>();
-		courseList = cDAO.getAll();
+	public List<Course> getAll() throws DAOException {
+		List<Course> courseList = null;
+		try {
+		courseList = cDAO.getAll(conn);
+		}finally {
+			DBAccess.closeConnection();
+		}
 		return courseList;
 	}
 }

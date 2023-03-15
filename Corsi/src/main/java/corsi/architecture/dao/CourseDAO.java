@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
@@ -120,16 +122,16 @@ public class CourseDAO implements DAOConstants {
 		return course;
 	}
 
-	public Course[] getAll(Connection conn) throws DAOException {
-		Course[] courses = null;
+	public List<Course> getAll(Connection conn) throws DAOException {
+		List<Course> courses = null;
 		try {
 			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
 			ResultSet rs = stmt.executeQuery(SELECT_COURSE);
 			rs.last();
-			courses = new Course[rs.getRow()];
+			courses = new ArrayList<Course>();
 			rs.beforeFirst();
-			for (int i = 0; rs.next(); i++) {
+			while (rs.next()) {
 				Course course = new Course();
 				course.setCourseCode(rs.getLong(1));
 				course.setCourseName(rs.getString(2));
@@ -139,7 +141,7 @@ public class CourseDAO implements DAOConstants {
 				course.setCourseComment(rs.getString(6));
 				course.setCourseRoom(rs.getString(7));
 				course.setProfessorCode(rs.getLong(8));
-				courses[i] = course;
+				courses.add(course);
 			}
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
