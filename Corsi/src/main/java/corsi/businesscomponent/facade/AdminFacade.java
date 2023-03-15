@@ -169,9 +169,9 @@ public class AdminFacade {
 		return sBC.getAll();
 	}
 	
-//	public int getStudentCount(long courseCode) throws ClassNotFoundException, IOException, DAOException {
-//		courseBC = new CourseBC();
-//		return courseBC.getStudentCount();
-//	}
+	public int getStudentCount(long courseCode) throws ClassNotFoundException, IOException, SQLException {
+		sBC = new StudentBC();
+		return sBC.getCount();
+	}
 
 }

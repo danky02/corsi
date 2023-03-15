@@ -148,5 +148,15 @@ public class CourseDAO implements DAOConstants {
 		}
 		return courses;
 	}
+	
+	public int getStudentCount(Connection conn) throws DAOException {
+		int count = 0;
+//		try {
+//			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+//		} catch(SQLException sql) {
+//			throw new DAOException(sql);
+//		}
+		return count;
+	}
 
 }

@@ -62,11 +62,13 @@ public class CourseBC {
 		return courseList;
 	}
 	
-//	public int getStudentCount() throws DAOException {
-//		try {
-//			cDAO.get
-//		} finally {
-//			DBAccess.closeConnection();
-//		}
-//	}
+	public int getStudentCount() throws DAOException {
+		int count = 0;
+		try {
+			cDAO.getStudentCount(conn);
+		} finally {
+			DBAccess.closeConnection();
+		}
+		return count;
+	}
 }
