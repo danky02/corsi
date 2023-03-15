@@ -179,7 +179,7 @@ public class AdminFacade {
 		return courseBC.getMostPopular();
 	}
 	
-	public Date getLatestCourse() throws ClassNotFoundException, IOException, SQLException {
+	public Date getLatestCourseDate() throws ClassNotFoundException, IOException, SQLException {
 		courseBC = new CourseBC();
 		return courseBC.getLatest();
 	}
