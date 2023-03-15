@@ -8,7 +8,7 @@ public interface DAOConstants {
 
 	final String SELECT_STUDENT_COUNT = "SELECT COUNT(*) FROM STUDENT";
 	final String SELECT_MOST_ATTENDED_COURSE = "Select course_name, count(*) as num from student_course group by course_name order by num desc limit 1";
-	final String SELECT_LATEST_COURSE = "SELECT MAX(start_date) FROM course";
+	final String SELECT_LATEST_DATE = "SELECT MAX(start_date) FROM course";
 	final String SELECT_AVG_DURATION = "SELECT DATEDIFF('day', data_inizio, data_fine) FROM course";
 	
 	final String UPDATE_COURSE = "Update course set course_name = ?, start_date = ?, end_date = ?, course_cost = ?, course_comments = ?, course_room = ?, professor_code = ? where course_code = ?";
