@@ -178,5 +178,14 @@ public class AdminFacade {
 		courseBC = new CourseBC();
 		return courseBC.getMostPopular();
 	}
-
+	
+	public String getLatestCourse() throws ClassNotFoundException, IOException, SQLException {
+		courseBC = new CourseBC();
+		return courseBC.getLatest();
+	}
+	
+	public String getAverageDuration() throws ClassNotFoundException, IOException, SQLException {
+		courseBC = new CourseBC();
+		return courseBC.getAverage();
+	}
 }
