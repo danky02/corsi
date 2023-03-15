@@ -68,7 +68,6 @@ public class Validator {
 	}
 	
 	
-	
 	public Boolean isValidComment(String comment) {
 		if(comment.length() <= 200)
 			return true;
