@@ -1,9 +1,5 @@
 package corsi.businesscomponent;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
 
 import corsi.architecture.dao.CourseDAO;
 import corsi.architecture.dao.DAOException;
