@@ -35,6 +35,8 @@ public class ControlloLogin extends HttpServlet {
 						userCookie.setMaxAge(10 * 365 * 24 * 60 * 60);
 						response.addCookie(userCookie);
 						response.sendRedirect("index.jsp");
+					} else {
+						response.sendRedirect("nopermission.jsp");
 					}
 				} else {
 					response.sendRedirect("nopermission.jsp");
