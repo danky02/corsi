@@ -13,11 +13,11 @@ public class CourseBC {
 	private Connection conn;
 	private CourseDAO cDAO;
 
-	private CourseBC() throws ClassNotFoundException, DAOException, IOException {
+	public CourseBC() throws ClassNotFoundException, DAOException, IOException {
 		conn = DBAccess.getConnection();
 		cDAO = CourseDAO.getFactory();
 	}
-
+	
 	public void create(Course course) throws ClassNotFoundException, DAOException, IOException {
 		try {
 			cDAO.create(conn, course);
@@ -61,4 +61,12 @@ public class CourseBC {
 		}
 		return courseList;
 	}
+	
+//	public int getStudentCount() throws DAOException {
+//		try {
+//			cDAO.get
+//		} finally {
+//			DBAccess.closeConnection();
+//		}
+//	}
 }

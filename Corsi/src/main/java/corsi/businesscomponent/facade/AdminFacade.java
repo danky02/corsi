@@ -1,13 +1,23 @@
-package eu.tasgroup.businesscomponent.facade;
+package corsi.businesscomponent.facade;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Set;
+
+import corsi.architecture.dao.DAOException;
+import corsi.businesscomponent.AdminBC;
+import corsi.businesscomponent.CourseBC;
+import corsi.businesscomponent.ProfessorBC;
+import corsi.businesscomponent.StudentBC;
+import corsi.businesscomponent.StudentCourseBC;
+import corsi.businesscomponent.model.Admin;
+import corsi.businesscomponent.model.Course;
+import corsi.businesscomponent.model.Professor;
+import corsi.businesscomponent.model.Student;
+import corsi.businesscomponent.model.StudentCourse;
 
 public class AdminFacade {
 	private static AdminFacade afInstance;
-	private CommentBC commBC;
 	private CourseBC courseBC;
 	private AdminBC aBC;
 	private StudentCourseBC scBC;
@@ -30,99 +40,89 @@ public class AdminFacade {
 	
 	// Per come è stato implementato, se si vorrebbe rimuovere getComment basta rimpiazzarlo
 	// con findComment del BC corrispettivo
-	public void deleteCommentByCode(long code) throws ClassNotFoundException, IOException {
-		Commento c = new Commento();
-		commBC = new CommentBC();
-		c = getCommentByCode(code);
-		commBC.delete(c);
-	}
+//	public void deleteCommentByCode(long code) throws ClassNotFoundException, IOException {
+//		Comment c = new Comment();
+//		commBC = new CommentBC();
+//		c = getCommentByCode(code);
+//		commBC.delete(c);
+//	}
 	
 	// Si può rimuovere
-	public Commento getCommentByCode(long code) throws ClassNotFoundException, IOException {
-		commBC = new CommentBC();
-		return commBC.findCommentByCode(code);
-	}
+//	public Comment getCommentByCode(long code) throws ClassNotFoundException, IOException {
+//		commBC = new CommentBC();
+//		return commBC.findCommentByCode(code);
+//	}
 
 	// Inoltre, per quanto riguarda il BC del comment, se la classe venisse inclusa
 	// all'interno del course basta cambiare il BC
-	public List<Commento> getAllComments() throws ClassNotFoundException, IOException {
-		commBC = new CommentBC();
-		return commBC.getAll();
-	}
+//	public List<Comment> getAllComments() throws ClassNotFoundException, IOException {
+//		commBC = new CommentBC();
+//		return commBC.getAll();
+//	}
 	
-	public int getCommentCount(long codeCourse) throws ClassNotFoundException, IOException {
-		courseBC = new courseBC();
-		return courseBC.getCommentsCount();
-	}
+//	public int getCommentCount(long codeCourse) throws ClassNotFoundException, IOException {
+//		courseBC = new courseBC();
+//		return courseBC.getCommentsCount();
+//	}
 
-	public void createCourse(Course course) throws ClassNotFoundException, IOException {
+	public void createCourse(Course course) throws ClassNotFoundException, IOException, DAOException {
 		courseBC = new CourseBC();
 		courseBC.create(course);
 	}
 	
-	public void updateCourse(Course course) throws ClassNotFoundException, IOException {
+	public void updateCourse(Course course) throws ClassNotFoundException, IOException, DAOException {
 		courseBC = new CourseBC();
 		courseBC.update(course);
 	}
 
-	public void deleteCourseByCode(long code) throws ClassNotFoundException, IOException {
-		Course c = new Course();
+	public void deleteCourseByCode(long code) throws ClassNotFoundException, IOException, DAOException {
 		courseBC = new CourseBC();
-		c = getCourseByCode(code);
-		courseBC.delete(c);
+		courseBC.deleteByCode(code);
 	}
 	
-	public void createProfessor(Professor professor) throws ClassNotFoundException, IOException {
+	public void createProfessor(Professor professor) throws ClassNotFoundException, IOException, DAOException {
 		pBC = new ProfessorBC();
 		pBC.create(professor);
 	}
 	
-	public void updateProfessor(Professor professor) throws ClassNotFoundException, IOException {
+	public void updateProfessor(Professor professor) throws ClassNotFoundException, IOException, DAOException {
 		pBC = new ProfessorBC();
 		pBC.update(professor);
 	}
 
-	public void deleteProfessorByCode(long code) throws ClassNotFoundException, IOException {
-		Course c = new Course();
-		courseBC = new courseBC();
-		c = getCommentByCode(code);
-		commBC.delete(c);
-	}
-	
-	public void getProfessorByCode(long code) throws ClassNotFoundException, IOException {
+	public void deleteProfessorByCode(long code) throws ClassNotFoundException, IOException, DAOException {
 		pBC = new ProfessorBC();
-		return pBC.findProfessorByCode(code);
+		pBC.deleteByCode(code);
 	}
 	
-	public List<Professor> getAllProfessors() throws ClassNotFoundException, IOException {
+	public Professor getProfessorByCode(long code) throws ClassNotFoundException, IOException, DAOException {
+		pBC = new ProfessorBC();
+		return pBC.getByCode(code);
+	}
+	
+	public List<Professor> getAllProfessors() throws ClassNotFoundException, IOException, DAOException {
 		pBC = new ProfessorBC();
 		return pBC.getAll();
 	}
 	
-	public void createAdmin(Admin admin) throws ClassNotFoundException, IOException {
-		aBC = new AdminBC();
-		aBC.create(admin);
-	}
-	
-	public void updateAdmin(Admin admin) throws ClassNotFoundException, IOException {
+	public void updateAdmin(Admin admin) throws ClassNotFoundException, IOException, DAOException {
 		aBC = new AdminBC();
 		aBC.update(admin);
 	}
 
-	public void deleteAdminByCode(Admin admin) throws ClassNotFoundException, IOException {
-		Admin a = new Admin();
+	public void deleteAdminByCode(long code) throws ClassNotFoundException, IOException, DAOException {
 		aBC = new AdminBC();
-		aBC.delete(a);
+		aBC.deleteByCode(code);
 	}
 	
-	public void getAdminByCode(long code) throws ClassNotFoundException, IOException {
+	public Admin getAdminByCode(long code) throws ClassNotFoundException, IOException, DAOException {
 		aBC = new AdminBC();
-		return aBC.findAdminByCode(code);
+		return aBC.getByCode(code);
 	}
 	
 	// Si sta assumendo che questo venga invocato quando uno studente sceglie di partecipare a un
 	// corso
-	public void createStudentCourse(StudentCourse sc) throws ClassNotFoundException, IOException {
+	public void createStudentCourse(StudentCourse sc) throws ClassNotFoundException, IOException, DAOException {
 		scBC = new StudentCourseBC();
 		scBC.create(sc);
 	}
@@ -134,48 +134,44 @@ public class AdminFacade {
 //	}
 	
 	// Volendo si può rimuovere
-	public StudentCourse getStudentCourseByCode(long code) {
-		scBC = new StudentCourse();
-		return scBC.findCommentByCode(code);
-	}
+//	public StudentCourse getStudentCourseByCode(long code) {
+//		scBC = new StudentCourseBC();
+//		return scBC.get(code);
+//	}
 	
-	public void deleteStudentCourseByCode(long code) throws ClassNotFoundException, IOException {
-		StudentCourse cs = new StudentCourse();
+	public void deleteStudentCourseByCode(long studentCode, long courseCode) throws ClassNotFoundException, IOException, DAOException {
 		scBC = new StudentCourseBC();
-		cs = getStudentCourseByCode(code);
-		scBC.delete(cs);
+		scBC.deleteByCode(studentCode, courseCode);
 	}
 	
-	public void createStudent(Student student) throws ClassNotFoundException, IOException {
+	public void createStudent(Student student) throws ClassNotFoundException, IOException, SQLException {
 		sBC = new StudentBC();
 		sBC.create(student);
 	}
 	
-	public void updateStudent(Student student) throws ClassNotFoundException, IOException {
+	public void updateStudent(Student student) throws ClassNotFoundException, IOException, SQLException {
 		sBC = new StudentBC();
 		sBC.update(student);
 	}
 
-	public void deleteStudentByCode(long code) throws ClassNotFoundException, IOException {
-		Student s = new Student();
+	public void deleteStudentByCode(long code) throws ClassNotFoundException, IOException, SQLException {
 		sBC = new StudentBC();
-		s = getStudentByCode(code);
-		sBC.delete(a);
+		sBC.deleteByCode(code);
 	}
 	
-	public void getStudentByCode(long code) throws ClassNotFoundException, IOException {
+	public Student getStudentByCode(long code) throws ClassNotFoundException, IOException, SQLException {
 		sBC = new StudentBC();
-		return aBC.findStudentByCode(code);
+		return sBC.getByCode(code);
 	}
 
-	public List<Student> getAllStudents() throws ClassNotFoundException, IOException {
+	public List<Student> getAllStudents() throws ClassNotFoundException, IOException, SQLException {
 		sBC = new StudentBC();
 		return sBC.getAll();
 	}
 	
-	public int getStudentCount(long courseCode) throws ClassNotFoundException, IOException {
-		courseBC = new CourseBC();
-		return courseBC.getStudentCount();
-	}
+//	public int getStudentCount(long courseCode) throws ClassNotFoundException, IOException, DAOException {
+//		courseBC = new CourseBC();
+//		return courseBC.getStudentCount();
+//	}
 
 }
