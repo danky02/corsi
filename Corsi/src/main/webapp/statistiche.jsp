@@ -1,0 +1,100 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="corsi.businesscomponent.facade.AdminFacade"%>
+<%
+if (session.getAttribute("username") != null) {
+%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<%@ include file="CDN.html"%>
+<meta charset="UTF-8">
+<title>Statistiche</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<jsp:include page="nav.jsp" />
+
+	<div class="container">
+		<header class="page-header">
+			<h3>Statistiche</h3>
+		</header>
+		<% AdminFacade af = AdminFacade.getInstance(); %>
+		<p>
+			Numero di corsisti totali:
+			<strong>
+			<%= af.getStudentCount() %>
+			</strong>
+		</p>
+		<br>
+		<p>
+			Corso con maggiore frequenza:
+			<strong>
+			<%= af.getPopularCourse() %>
+			</strong>
+		</p>
+		<br>
+		<p>
+			Data del corso con massima data d'inizio :
+			<strong>
+			<% 
+			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+	        %>
+			<%= formatter.format(af.getLatestCourseDate())%>
+			</strong>
+		</p>
+		<br>
+		<p>
+			Durata media dei corsi:
+			<strong>
+			<%= af.getAverageDuration()%>
+			</strong>
+		</p>
+		<br>
+		<!-- Qua da aggiustare perché non so come prenderli
+			 Manca DAO, BC e AdminFacade -->
+		<p>
+			Numero di commenti totali:
+			<strong>
+			<%= af.getTotCountComm()%>
+			</strong>
+		</p>
+		<br>
+		<!-- Qua lista di tutti i corsisti -->
+		<div class="table-responsive">
+			<table class="table tabel-hover">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Cognome</th>
+						<th>Titolo di studio</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					List<Student> corsisti = af.getAllStudents();
+					while(corsisti.next()) {
+					%>
+					<tr>
+						<td style="vertical-align: middle;"><%= %></td>
+						<td style="vertical-align: middle;"><%=.getNome()%></td>
+						<td style="vertical-align: middle;"><%=.getCognome%></td>
+						<td style="vertical-align: middle;"><%=.get%></td>
+					</tr>
+					<%
+					corsisti.next();
+					}
+					%>
+				</tbody>
+			</table>
+		</div>
+		<hr>
+	</div>
+</body>
+</html>
+<%
+} else {
+response.sendRedirect(".jsp");
+}
+%>
