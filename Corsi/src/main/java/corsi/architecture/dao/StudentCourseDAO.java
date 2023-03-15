@@ -11,7 +11,13 @@ public class StudentCourseDAO implements DAOConstants {
 
 	private CachedRowSet rowSet;
 
-	private void StudentCourseDAO() {
+	private StudentCourseDAO() throws DAOException {
+		try {
+			rowSet = RowSetProvider.newFactory().createCachedRowSet();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+
+		}
 	}
 
 	public StudentCourseDAO getFactory() throws DAOException {
@@ -36,4 +42,3 @@ public class StudentCourseDAO implements DAOConstants {
 	}
 
 }
-
