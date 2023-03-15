@@ -17,7 +17,7 @@ public interface DAOConstants {
 	final String DELETE_STUDENT = "Delete from student where student_code = ?";
 	final String DELETE_PROFESSOR = "Delete from professor where professor_code = ?";
 	final String DELETE_ADMIN = "Delete from admin where admin_code = ?";
-	final String DELETE_STUDENT_COURSE = "Delete from student_course where student_course_code = ?";
+	final String DELETE_STUDENT_COURSE = "Delete from student_course where student_code = ? and course_code=?";
 	final String DELETE_COURSE_BY_CODE = "Delete from course where course_code= ?";
 
 	final String SELECT_COURSE_BY_CODE = "Select * from course where course_code = ?";
