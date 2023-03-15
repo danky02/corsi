@@ -19,7 +19,7 @@ public class StudentCourseDAO implements DAOConstants {
 		}
 	}
 
-	public StudentCourseDAO getFactory() throws DAOException {
+	public static StudentCourseDAO getFactory() throws DAOException {
 		return new StudentCourseDAO();
 	}
 
