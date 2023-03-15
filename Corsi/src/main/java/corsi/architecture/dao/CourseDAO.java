@@ -160,7 +160,6 @@ public class CourseDAO implements DAOConstants {
 	}
 	
 	public String getMostPopular(Connection conn) throws DAOException {
-		Course course = null;
 		PreparedStatement ps;
 		String result;
 		try {
@@ -171,7 +170,34 @@ public class CourseDAO implements DAOConstants {
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
-
+		return result;
+	}
+	
+	public String getLatest(Connection conn) throws DAOException {
+		PreparedStatement ps;
+		String result;
+		try {
+			ps = conn.prepareStatement(SELECT_LATEST_COURSE);
+			ResultSet rs = ps.executeQuery();
+			result = rs.getString("course_name");
+			rs.close();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return result;
+	}
+	
+	public int getAverage(Connection conn) throws DAOException {
+		PreparedStatement ps;
+		int result;
+		try {
+			ps = conn.prepareStatement(SELECT_AVG);
+			ResultSet rs = ps.executeQuery();
+			result = rs.getInt(1);
+			rs.close();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
 		return result;
 	}
 }
