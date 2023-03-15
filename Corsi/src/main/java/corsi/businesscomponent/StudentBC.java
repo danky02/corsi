@@ -62,7 +62,7 @@ public class StudentBC {
 	}
 	
 	// getAll() list<Student>
-	public List<Student> getAll(Student student) throws SQLException {
+	public List<Student> getAll() throws SQLException {
 		List<Student> result = null;
 		try {
 			result = StudentDAO.getFactory().getAll(conn);
