@@ -12,6 +12,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import corsi.businesscomponent.facade.AdminFacade;
 import corsi.businesscomponent.model.Course;
 import corsi.businesscomponent.model.Professor;
 import corsi.businesscomponent.model.Student;
@@ -99,8 +100,7 @@ public class Validator {
 	private Boolean isValidProfessor(long code) {
 		Professor professor = null;
 		try {
-			AdminFacade facade = new AdminFacade();
-			professor = facade.getProfessorByCode(code);
+			professor = AdminFacade.getInstance().getProfessorByCode(code);
 			if(professor == null)
 				return false;
 			return true;
