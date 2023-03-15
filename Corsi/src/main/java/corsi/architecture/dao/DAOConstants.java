@@ -26,6 +26,7 @@ public interface DAOConstants {
 	final String SELECT_ADMIN_BY_CODE = "Select * from admin where admin_code = ?";
 	final String SELECT_ADMINCODE_BY_USERNAME = "Select admin_code from admin where admin_username = ?";
 
+	
 	// Sequence
 	final String SELECT_STUDENT_SEQ = "select student_seq.nextval from dual";
 	final String SELECT_COURSE_SEQ = "select course_seq.nextval from dual";

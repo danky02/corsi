@@ -12,7 +12,9 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import corsi.businesscomponent.model.Course;
 import corsi.businesscomponent.model.Professor;
+import corsi.businesscomponent.model.Student;
 
 public class Validator {
 
@@ -24,7 +26,19 @@ public class Validator {
 		return new Validator();
 	}
 	
-	public Boolean isValidStudentName(String name) {
+	public Boolean isValidStudent(Student student) {
+		if(isValidStudentName(student.getName()) && isValidStudentName(student.getSurname()))
+			return true;
+		return false;
+	}
+	
+	public Boolean isValidCourse(Course course) throws ParseException {
+		if(isValidCourseName(course.getCourseName()) && isValidTimeFrame(course.getStartDate(), course.getEndDate()) && isValidClassroom(course.getCourseRoom()) && isValidProfessor(course.getProfessorCode()))
+			return true;
+		return false;
+	}
+		
+	private Boolean isValidStudentName(String name) {
 		if(name.length() <= 30) {
 			char[] charArray = name.toCharArray();
 			for(char c : charArray)
@@ -35,7 +49,7 @@ public class Validator {
 		return false;
 	}
 	
-	public Boolean isValidCourseName(String name) {
+	private Boolean isValidCourseName(String name) {
 		if(name.length() <= 30) {
 			char[] charArray = name.toCharArray();
 			for(char c : charArray)
@@ -46,14 +60,14 @@ public class Validator {
 		return false;
 	}
 	
-	public Boolean isValidDate(String date) {
+	private Boolean isValidDate(String date) {
 		String regex = "^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(date);
 		return matcher.matches();
 	}
 	
-	public Boolean isValidTimeFrame(Date start, Date end) throws ParseException {
+	private Boolean isValidTimeFrame(Date start, Date end) throws ParseException {
 		GregorianCalendar startDate = new GregorianCalendar();
 		GregorianCalendar endDate = new GregorianCalendar();
 		startDate.setTime(start);
@@ -74,7 +88,7 @@ public class Validator {
 		return false;
 	}
 	
-	public Boolean isValidClassroom(String classroom) {
+	private Boolean isValidClassroom(String classroom) {
 		String regex = "^[a-zA-Z0-9]*$";
 		Pattern pattern = Pattern.compile(regex);
 		String sDate = classroom.toString();
@@ -82,17 +96,17 @@ public class Validator {
 		return matcher.matches();
 	}
 	
-//	public Boolean isValidProfessor(long code) {
-//		Professor professor = null;
-//		try {
-//			AdminFacade facade = new AdminFacade();
-//			professor = facade.getProfessorByCode(code);
-//			if(professor == null)
-//				return false;
-//			return true;
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			return false;
-//		}
-//	}
+	private Boolean isValidProfessor(long code) {
+		Professor professor = null;
+		try {
+			AdminFacade facade = new AdminFacade();
+			professor = facade.getProfessorByCode(code);
+			if(professor == null)
+				return false;
+			return true;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }
