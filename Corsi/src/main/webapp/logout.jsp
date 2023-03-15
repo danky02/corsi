@@ -1,5 +1,12 @@
 <%
 	if(session.getAttribute("username") != null) {
+		Cookie[] cookies = request.getCookies();
+		for(Cookie c : cookies) {
+			if(c.getName().equals("username")){
+				c.setMaxAge(0);
+				response.addCookie(c);
+			}
+		}
 		session.invalidate();
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>

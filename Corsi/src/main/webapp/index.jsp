@@ -15,7 +15,7 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
-	<h4>Cookies: <%= request.getCookies() != null ? request.getCookies().length : 0 %></h4>
+	<%-- <h4>Cookies: <%= request.getCookies() != null ? request.getCookies().length : 0 %></h4> --%>
 </body>
 </html>
 <% 

@@ -27,7 +27,6 @@
 	<div class="container">
 		<header class="page-header">
 			<h3>Inserisci i dati per accedere</h3>
-			<h4>Cookies: <%= request.getCookies() != null ? request.getCookies().length : 0 %></h4>
 		</header>
 		<form id="form" method="post" action="/<%=application.getServletContextName()%>/loginControl" class="form-horizontal">
 			<!-- Username -->
