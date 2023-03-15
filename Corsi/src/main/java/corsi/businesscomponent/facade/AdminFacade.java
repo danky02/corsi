@@ -173,5 +173,10 @@ public class AdminFacade {
 		sBC = new StudentBC();
 		return sBC.getCount();
 	}
+	
+	public String getPopularCourse() throws ClassNotFoundException, IOException, SQLException {
+		courseBC = new CourseBC();
+		return courseBC.getMostPopular();
+	}
 
 }
