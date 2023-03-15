@@ -81,6 +81,18 @@ public class CourseDAO implements DAOConstants {
 			throw new DAOException(sql);
 		}
 	}
+	
+	public void deleteByCode(Connection conn, long id) throws DAOException {
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(DELETE_COURSE_BY_CODE);
+			ps.setLong(1, id);
+			ps.execute();
+			conn.commit();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+	}
 
 	public Course getByCode(Connection conn, long id) throws DAOException {
 		Course course = null;
