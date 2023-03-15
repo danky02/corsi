@@ -7,6 +7,7 @@ import java.util.List;
 
 import corsi.architecture.dao.StudentDAO;
 import corsi.architecture.dbaccess.DBAccess;
+import corsi.businesscomponent.idgenerator.StudentIdGenerator;
 import corsi.businesscomponent.model.Student;
 
 
@@ -19,13 +20,15 @@ public class StudentBC {
 	
 
 	// create (student: Student) void
-	public void create(Student student) throws SQLException {
-		try {
-			StudentDAO.getFactory().create(conn, student);
-		}finally {
-			DBAccess.closeConnection();
+		public void create(Student student) throws SQLException, ClassNotFoundException, IOException {
+			try {
+				long id = StudentIdGenerator.getInstance().getNextId();
+				student.setCode(id);
+				StudentDAO.getFactory().create(conn, student);
+			}finally {
+				DBAccess.closeConnection();
+			}
 		}
-	}
 	
 
 	// update (student: Student) void
