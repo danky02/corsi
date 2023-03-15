@@ -79,4 +79,20 @@ public class CourseBC {
 			DBAccess.closeConnection();
 		}
 	}
+	
+	public int getLatest() throws DAOException {
+		try{
+			cDAO.getLatest(conn);
+		} finally {
+			DBAccess.closeConnection();
+		}
+	}
+	
+	public int getAverage() throws DAOException {
+		try{
+			cDAO.getAverage(conn);
+		} finally {
+			DBAccess.closeConnection();
+		}
+	}
 }
