@@ -1,13 +1,13 @@
 <%
 	if(session.getAttribute("username") != null)
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("courseAttendance.jsp");
 	else {
 		if(request.getCookies() != null){
 			Cookie[] cookies = request.getCookies();
 			for(Cookie c : cookies){
 				if(c.getName().equals("username")){
 					session.setAttribute("username", c.getValue());
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("courseAttendance.jsp");
 				}
 			}
 		}

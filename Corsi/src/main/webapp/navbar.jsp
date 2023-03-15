@@ -25,7 +25,7 @@
 		    		} else {
 		    	%>
 		    	<ul class="nav navbar-nav">
-			        <li><a href="report.jsp">Statistiche</a></li>
+			        <li><a href="statistiche.jsp">Statistiche</a></li>
 					<li class="dropdown">
 						<a href="#" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">Gestione</a>
 						<ul class="dropdown-menu">
