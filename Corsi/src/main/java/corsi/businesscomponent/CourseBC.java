@@ -80,7 +80,7 @@ public class CourseBC {
 		}
 	}
 	
-	public int getLatest() throws DAOException {
+	public String getLatest() throws DAOException {
 		try{
 			cDAO.getLatest(conn);
 		} finally {
