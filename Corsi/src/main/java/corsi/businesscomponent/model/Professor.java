@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class Professor implements Serializable {
 	private static final long serialVersionUID = -4303990580010804056L;
 
-	private String nome;
-	private String cognome;
+	private String name;
+	private String surname;
 	private String cv;
 	private Long code;
 	
@@ -14,20 +14,20 @@ public class Professor implements Serializable {
 		
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getCognome() {
-		return cognome;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	public String getCv() {
@@ -48,7 +48,11 @@ public class Professor implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Professor [nome=" + nome + ", cognome=" + cognome + ", cv=" + cv + ", code=" + code + "]";
+		return "Professor [name=" + name + ", surname=" + surname + ", cv=" + cv + ", code=" + code + "]";
 	}
 	
+	
+	
 }
+
+	
