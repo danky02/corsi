@@ -31,7 +31,6 @@ if (session.getAttribute("username") != null) {
 				<tr>
 					<th>Student Name</th>
 					<th>Student Surname</th>
-					<th>Profile</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,7 +48,7 @@ if (session.getAttribute("username") != null) {
 			</tbody>
 		</table>
 		<form style="float: right;"
-			action="/<%=application.getServletContextName()%>/studentInsert"
+			action="/<%=application.getServletContextName()%>/studentInsert.jsp"
 			method="post">
 			<button type="submit" class="btn btn-primary btn-xs">
 				Add Student</button>
