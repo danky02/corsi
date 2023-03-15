@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import corsi.architecture.dao.DAOConstants;
+import corsi.architecture.dbaccess.DBAccess;
+
 public class Login implements DAOConstants {
 	private Connection conn;
 	
@@ -14,16 +17,17 @@ public class Login implements DAOConstants {
 	}
 
 	public String getAdminPass(String username) throws SQLException{
+		String pass = null;
 		try {
-			PreparedStatement ps = conn.prepareStatement(SELECT_ADMINPASS);
+			PreparedStatement ps = conn.prepareStatement(SELECT_ADMINCODE_BY_USERNAME);
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next())
-				return rs.getString(1);
-			return null;
+				pass = rs.getString(1);
 		} catch(SQLException sql) {
 			sql.printStackTrace();
 			System.out.println(sql.getMessage());
 		}
+		return pass;
 	}
 }
