@@ -1,9 +1,7 @@
 package corsi.businesscomponent;
 
-
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 import corsi.architecture.dao.CourseDAO;
@@ -14,10 +12,10 @@ import corsi.businesscomponent.model.Course;
 public class CourseBC {
 	private Connection conn;
 	private CourseDAO cDAO;
-	
-	private CourseBC() throws ClassNotFoundException, DAOException, IOException{
-		conn= DBAccess.getConnection();
-		cDAO= CourseDAO.getFactory();
+
+	private CourseBC() throws ClassNotFoundException, DAOException, IOException {
+		conn = DBAccess.getConnection();
+		cDAO = CourseDAO.getFactory();
 	}
 
 	public void create(Course course) throws ClassNotFoundException, DAOException, IOException {
@@ -28,7 +26,7 @@ public class CourseBC {
 		}
 	}
 
-	public void update(Course course) throws ClassNotFoundException, DAOException, IOException  {
+	public void update(Course course) throws ClassNotFoundException, DAOException, IOException {
 		try {
 			cDAO.update(conn, course);
 		} finally {
@@ -45,9 +43,9 @@ public class CourseBC {
 	}
 
 	public Course getByCode(long code) throws DAOException {
-		Course course= null;
-		try {	
-			course= cDAO.getByCode(conn, code);
+		Course course = null;
+		try {
+			course = cDAO.getByCode(conn, code);
 		} finally {
 			DBAccess.closeConnection();
 		}
@@ -57,8 +55,8 @@ public class CourseBC {
 	public List<Course> getAll() throws DAOException {
 		List<Course> courseList = null;
 		try {
-		courseList = cDAO.getAll(conn);
-		}finally {
+			courseList = cDAO.getAll(conn);
+		} finally {
 			DBAccess.closeConnection();
 		}
 		return courseList;
