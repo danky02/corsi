@@ -5,6 +5,7 @@
     <welcome-file>home.jsp</welcome-file>
     <welcome-file>admin.jsp</welcome-file>
 	<welcome-file>index.jsp</welcome-file>
+	<welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
   <security-constraint>
