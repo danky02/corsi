@@ -173,13 +173,13 @@ public class CourseDAO implements DAOConstants {
 		return result;
 	}
 	
-	public String getLatest(Connection conn) throws DAOException {
+	public Date getLatest(Connection conn) throws DAOException {
 		PreparedStatement ps;
-		String result;
+		java.util.Date result;
 		try {
-			ps = conn.prepareStatement(SELECT_LATEST_COURSE);
+			ps = conn.prepareStatement(SELECT_LATEST_DATE);
 			ResultSet rs = ps.executeQuery();
-			result = rs.getString("course_name");
+			result = java.util.Date(rs.getDate(1).getTime());
 			rs.close();
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
