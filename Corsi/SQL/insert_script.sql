@@ -1,4 +1,4 @@
-insert into admin values('Mario', 'Rossi', 'mrrossi69', 69420);
+insert into admin values('Mario', 'Rossi', 'mrrossi', 666420);
 
 insert into professor values('Luigi', 'Bianchi', '#', 1);
 insert into professor values('Maria', 'Verdi', '#', 2);
