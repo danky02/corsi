@@ -17,7 +17,7 @@ if (session.getAttribute("username") != null) {
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<!-- jsp:include page="nav.jsp" /-->
+	<jsp:include page="navbar.jsp" />
 	<div class="container">
 		<header class="page-header">
 			<h2>Student Courses Registration</h2>
@@ -31,6 +31,7 @@ if (session.getAttribute("username") != null) {
 				<tr>
 					<th>Student Name</th>
 					<th>Student Surname</th>
+					<th>Profile</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,7 +49,7 @@ if (session.getAttribute("username") != null) {
 			</tbody>
 		</table>
 		<form style="float: right;"
-			action="/<%=application.getServletContextName()%>/aggiungiCarrello"
+			action="/<%=application.getServletContextName()%>/studentInsert"
 			method="post">
 			<button type="submit" class="btn btn-primary btn-xs">
 				Add Student</button>
