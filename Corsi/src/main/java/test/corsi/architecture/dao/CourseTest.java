@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.sql.Connection;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -90,7 +91,7 @@ class CourseTest {
 	@Order(4)
 	void testGetAll() {
 		try {
-			Course[] courses = CourseDAO.getFactory().getAll(conn);
+			List<Course> courses = CourseDAO.getFactory().getAll(conn);
 			assertNotNull(courses);
 			System.out.println("eseguito il getAll");
 		} catch (DAOException exc) {
