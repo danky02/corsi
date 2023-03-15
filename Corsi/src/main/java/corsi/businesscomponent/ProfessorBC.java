@@ -2,10 +2,10 @@ package corsi.businesscomponent;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 import corsi.architecture.dao.DAOException;
+import corsi.architecture.dao.ProfessorDAO;
 import corsi.architecture.dbaccess.DBAccess;
 import corsi.businesscomponent.model.Professor;
 
@@ -36,7 +36,8 @@ public class ProfessorBC {
 
 	public void deleteByCode(long code) throws DAOException {
 		try {
-			pDAO.deleteByCode(conn, code);
+			Professor professor = pDAO.getByCode(conn, code);
+			pDAO.delete(conn, professor);
 		} finally {
 			DBAccess.closeConnection();
 
@@ -44,17 +45,24 @@ public class ProfessorBC {
 	}
 
 	public Professor getByCode(long code) throws DAOException {
+		Professor result = null;
 		try {
-			return pDAO.getByCode(conn, code);
+			result =  pDAO.getByCode(conn, code);
 		} finally {
 			DBAccess.closeConnection();
-
 		}
+		
+		return result;
 	}
 
-	public List<Professor> getAll() {
-		List<Professor> professorList = new ArrayList<>();
-		professorList = pDAO.getAll();
+	public List<Professor> getAll() throws DAOException {
+		List<Professor> professorList = null;
+		try {
+			professorList = pDAO.getAll(conn);			
+		} finally {
+			DBAccess.closeConnection();			
+		}
+		
 		return professorList;
 	}
 
