@@ -158,5 +158,20 @@ public class CourseDAO implements DAOConstants {
 //		}
 		return count;
 	}
+	
+	public String getMostPopular(Connection conn) throws DAOException {
+		Course course = null;
+		PreparedStatement ps;
+		String result;
+		try {
+			ps = conn.prepareStatement(SELECT_MOST_ATTENDED_COURSE);
+			ResultSet rs = ps.executeQuery();
+			result = rs.getString("course_name");
+			rs.close();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
 
+		return result;
+	}
 }
