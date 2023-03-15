@@ -184,7 +184,7 @@ public class AdminFacade {
 		return courseBC.getLatest();
 	}
 	
-	public String getAverageDuration() throws ClassNotFoundException, IOException, SQLException {
+	public int getAverageDuration() throws ClassNotFoundException, IOException, SQLException {
 		courseBC = new CourseBC();
 		return courseBC.getAverage();
 	}
