@@ -71,4 +71,12 @@ public class CourseBC {
 		}
 		return count;
 	}
+	
+	public String getMostPopular() throws DAOException {
+		try {
+			cDAO.getMostPopular(conn);
+		} finally {
+			DBAccess.closeConnection();
+		}
+	}
 }
