@@ -152,12 +152,12 @@ public class CourseDAO implements DAOConstants {
 
 	public String getMostPopular(Connection conn) throws DAOException {
 		Statement stmt;
-		String result;
+		String result = null;
 		try {
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = stmt.executeQuery(SELECT_MOST_ATTENDED_COURSE);
-			rs.next();
-			result = rs.getString("course_name");
+			if(rs.next())
+				result = rs.getString("course_name");			
 			rs.close();
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
