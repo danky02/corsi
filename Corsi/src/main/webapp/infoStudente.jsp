@@ -4,7 +4,7 @@
 <%@page import="corsi.businesscomponent.model.Student"%>
 <%@page import="corsi.businesscomponent.facade.AdminFacade"%>
 <%
-if (session.getAttribute("username") != null) {
+	if (session.getAttribute("username") != null) {
 %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -65,6 +65,6 @@ if (session.getAttribute("username") != null) {
 </html>
 <%
 } else {
-response.sendRedirect("login.jsp");
+	response.sendRedirect("login.jsp");
 }
 %>

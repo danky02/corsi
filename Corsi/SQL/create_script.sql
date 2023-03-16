@@ -37,7 +37,7 @@ constraint fk_crs_code foreign key(course_code) references course(course_code)
 create table admin(
 admin_name varchar2(30),
 admin_surname varchar2(30),
-admin_username varchar2(20),
+admin_username varchar2(20) unique,
 admin_code int,
 constraint pk_admin_code primary key(admin_code)
 );

@@ -1,18 +1,14 @@
 package corsi.businesscomponent.utilities;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import corsi.businesscomponent.facade.AdminFacade;
+import corsi.businesscomponent.model.Admin;
 import corsi.businesscomponent.model.Course;
 import corsi.businesscomponent.model.Professor;
 import corsi.businesscomponent.model.Student;
@@ -32,6 +28,13 @@ public class Validator {
 			return true;
 		return false;
 	}
+	
+	public Boolean isValidAdmin(Admin admin) {
+		if(isValidStudentName(admin.getAdminName()) && isValidStudentName(admin.getAdminSurname()))
+			return true;
+		return false;
+	}
+	
 	
 	public Boolean isValidCourse(Course course) throws ParseException {
 		if(isValidCourseName(course.getCourseName()) && isValidTimeFrame(course.getStartDate(), course.getEndDate()) && isValidClassroom(course.getCourseRoom()) && isValidProfessor(course.getProfessorCode()))
