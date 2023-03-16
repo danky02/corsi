@@ -2,6 +2,7 @@ package corsi.businesscomponent;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Date;
 import java.util.List;
 
 import corsi.architecture.dao.CourseDAO;
@@ -73,26 +74,32 @@ public class CourseBC {
 	}
 	
 	public String getMostPopular() throws DAOException {
+		String mostPop = null;
 		try {
-			cDAO.getMostPopular(conn);
+			mostPop = cDAO.getMostPopular(conn);
 		} finally {
 			DBAccess.closeConnection();
 		}
+		return mostPop;
 	}
 	
 	public Date getLatest() throws DAOException {
+		Date date;
 		try{
-			cDAO.getLatest(conn);
+			date = cDAO.getLatest(conn);
 		} finally {
 			DBAccess.closeConnection();
 		}
+		return date;
 	}
 	
 	public int getAverage() throws DAOException {
+		int avg = 0;
 		try{
-			cDAO.getAverage(conn);
+			avg = cDAO.getAverage(conn);
 		} finally {
 			DBAccess.closeConnection();
 		}
+		return avg;
 	}
 }

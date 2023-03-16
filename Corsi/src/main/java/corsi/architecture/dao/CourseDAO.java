@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.sql.rowset.CachedRowSet;
@@ -179,7 +180,7 @@ public class CourseDAO implements DAOConstants {
 		try {
 			ps = conn.prepareStatement(SELECT_LATEST_DATE);
 			ResultSet rs = ps.executeQuery();
-			result = java.util.Date(rs.getDate(1).getTime());
+			result = new Date(rs.getDate(1).getTime());
 			rs.close();
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
@@ -191,7 +192,7 @@ public class CourseDAO implements DAOConstants {
 		PreparedStatement ps;
 		int result;
 		try {
-			ps = conn.prepareStatement(SELECT_AVG);
+			ps = conn.prepareStatement(SELECT_AVG_DURATION);
 			ResultSet rs = ps.executeQuery();
 			result = rs.getInt(1);
 			rs.close();

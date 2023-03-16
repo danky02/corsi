@@ -2,6 +2,7 @@ package corsi.businesscomponent.facade;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import corsi.architecture.dao.DAOException;
