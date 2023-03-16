@@ -16,47 +16,47 @@
 </head> 
 <body>
 	<jsp:include page="navbar.jsp"/>
-	div class="container">
+	<div class="container">
 	<header class="page-header">
 		<h3>Dati del tuo profilo</h3>
 	</header>
 	<form action="/<%=application.getServletContextName()%>/profilo" method="post" id="form" class="form-horizontal">
 	 <!-- --------------------------Nome -->
 	 <div class="form-group">
-	 	<label class="col-md-1 controll-label">Nome</label>
-	 	
-	 	<div class="col-md-4 inputGroupConteiner">
+	 	<label class="col-md-1 control-label">Nome</label>
+	 	<div class="col-md-4 inputGroupContainer">
 	 		<div class="input-group">
 	 			<span class="input-group-addon">
 	 				<i class="glyphicon glyphicon-user"></i>
 	 			</span>
-	 			<input type="text" readonly value= "<%= AdminFacade.getInstance().getAdminByUsername((String)session.getAttribute("username")).getAdminName()%>"
+	 			<input class="form-control" type="text" readonly value= "<%= AdminFacade.getInstance().getAdminByUsername((String)session.getAttribute("username")).getAdminName()%>"
 	 			id="nome" name="nome">
 	 			<input type="hidden" name="username" value="<%=session.getAttribute("username") %>">
-	 			<button type="button" onclick="modifica('nome')">
-	 				<i class="glyphicon glyphicon-pencil"></i>
-	 			</button>
 	 		</div>
 	 	</div>
-	 <div class="col-md-7 error" id="infoStudentName"></div>
-
-	 
-	 <div class="col-md-4 inputGroupConteiner">
-	 	<div class="input-group">
-	 		<span class="input-group-addon">
-	 			<i class="glyphicon glyphicon-user"></i>
-	 		</span>
-	 		<input type="text" readonly value= "<%= AdminFacade.getInstance().getAdminByUsername((String)session.getAttribute("username")).getAdminSurname()%>"
-	 			id="cognome" name="cognome">
-	 		<input type="hidden" name="username" value="<%=session.getAttribute("username") %>">
-	 		<button type="button" onclick="modifica('cognome')">
+		<button class="btn btn-primary" type="button" onclick="modifica('nome')">
+			<i class="glyphicon glyphicon-pencil"></i>
+		</button>
+	 	<div class="col-md-7 error" id="infoStudentName"></div>
+	</div>
+	<div class="form-group">
+	 	<label class="col-md-1 control-label">Cognome</label>
+		 <div class="col-md-4 inputGroupContainer">
+		 	<div class="input-group">
+		 		<span class="input-group-addon">
+		 			<i class="glyphicon glyphicon-user"></i>
+		 		</span>
+		 		<input class="form-control" type="text" readonly value= "<%= AdminFacade.getInstance().getAdminByUsername((String)session.getAttribute("username")).getAdminSurname()%>"
+		 			id="cognome" name="cognome">
+		 		<input type="hidden" name="username" value="<%=session.getAttribute("username") %>">
+		 	</div>
+		 </div>
+	 		<button class="btn btn-primary" type="button" onclick="modifica('cognome')">
 	 			<i class="glyphicon glyphicon-pencil"></i>
 	 		</button>
-	 	</div>
-	 </div>
-	 	<div class="col-md-7 error" id="infoStudentSurname">
+		 	<div class="col-md-7 error" id="infoStudentSurname">
+		</div>	
 	</div>
-</div>
 
 <div class="row">
 	<div class="col-md-4 col-md-off-set-1">
@@ -66,7 +66,7 @@
 	</div>
 </div>
 </form>
-
+</div>
 </body>
 </html>
 <% 
