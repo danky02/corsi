@@ -59,7 +59,8 @@ public class StudentCourseDAO implements DAOConstants {
 			rs = ps.executeQuery();
 			rs.next();
 			count = rs.getInt("1");
-			rs.close();			
+			rs.close();
+			
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
