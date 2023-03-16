@@ -32,7 +32,10 @@ if (session.getAttribute("username") != null) {
 			</strong>
 		</p>
 		<br>
-		<% if(af.getPopularCourse() != null) {
+		<% 
+			String tmpCourse = null;
+			tmpCourse = af.getPopularCourse();
+			if(tmpCourse != null) {
 		%>
 		<p>
 			Corso con maggiore frequenza:
