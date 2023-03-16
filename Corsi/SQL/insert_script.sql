@@ -5,8 +5,8 @@ insert into professor values('Luigi', 'Bianchi', '#', 1);
 insert into professor values('Maria', 'Verdi', '#', 2);
 insert into professor values('Teresa', 'Gialli', '#', 3);
 
-insert into student values('Babbo', 'Natale', 1, 1);
-insert into student values('Giovanni', 'Verga', 2, 0);
-insert into student values('Dante', 'Alighieri', 3, 1);
+insert into student values('Babbo', 'Natale', 	100001, 1);
+insert into student values('Giovanni', 'Verga', 100002, 0);
+insert into student values('Dante', 'Alighieri',100003, 1);
 
 commit
