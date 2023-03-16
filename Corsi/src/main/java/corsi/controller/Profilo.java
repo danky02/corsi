@@ -22,10 +22,8 @@ public class Profilo extends HttpServlet {
 
 		try {
 			admin = AdminFacade.getInstance().getAdminByUsername(request.getParameter("username"));
-			System.out.println(request.getParameter("nome"));
-			System.out.println(request.getParameter("cognome"));
-			admin.setAdminName(request.getParameter("nome"));
-			admin.setAdminSurname(request.getParameter("cognome"));
+			admin.setAdminName(request.getParameter("name"));
+			admin.setAdminSurname(request.getParameter("surname"));
 			if(Validator.getInstance().isValidAdmin(admin))
 				AdminFacade.getInstance().updateAdmin(admin);
 			else {
