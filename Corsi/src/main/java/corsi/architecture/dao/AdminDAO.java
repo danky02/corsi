@@ -9,9 +9,6 @@ import corsi.businesscomponent.model.Admin;
 
 public class AdminDAO implements DAOConstants {
 
-	private AdminDAO() throws DAOException {
-	}
-
 	public static AdminDAO getFactory() throws DAOException {
 		return new AdminDAO();
 	}

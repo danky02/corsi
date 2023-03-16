@@ -69,7 +69,7 @@ public class CourseDAO implements DAOConstants {
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(UPDATE_COURSE);
-			
+
 			ps.setString(1, entity.getCourseName());
 			ps.setDate(2, new java.sql.Date(entity.getStartDate().getTime()));
 			ps.setDate(3, new java.sql.Date(entity.getEndDate().getTime()));
@@ -84,7 +84,7 @@ public class CourseDAO implements DAOConstants {
 			throw new DAOException(sql);
 		}
 	}
-	
+
 	public void deleteByCode(Connection conn, long id) throws DAOException {
 		PreparedStatement ps;
 		try {
@@ -149,23 +149,13 @@ public class CourseDAO implements DAOConstants {
 		}
 		return courses;
 	}
-	
-	public int getStudentCount(Connection conn) throws DAOException {
-		int count = 0;
-//		try {
-//			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-//		} catch(SQLException sql) {
-//			throw new DAOException(sql);
-//		}
-		return count;
-	}
-	
+
 	public String getMostPopular(Connection conn) throws DAOException {
-		PreparedStatement ps;
+		Statement stmt;
 		String result;
 		try {
-			ps = conn.prepareStatement(SELECT_MOST_ATTENDED_COURSE);
-			ResultSet rs = ps.executeQuery();
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = stmt.executeQuery(SELECT_MOST_ATTENDED_COURSE);
 			result = rs.getString("course_name");
 			rs.close();
 		} catch (SQLException sql) {
@@ -173,13 +163,13 @@ public class CourseDAO implements DAOConstants {
 		}
 		return result;
 	}
-	
+
 	public Date getLatest(Connection conn) throws DAOException {
-		PreparedStatement ps;
+		Statement stmt;
 		java.util.Date result;
 		try {
-			ps = conn.prepareStatement(SELECT_LATEST_DATE);
-			ResultSet rs = ps.executeQuery();
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = stmt.executeQuery(SELECT_LATEST_DATE);
 			result = new Date(rs.getDate(1).getTime());
 			rs.close();
 		} catch (SQLException sql) {
@@ -187,13 +177,13 @@ public class CourseDAO implements DAOConstants {
 		}
 		return result;
 	}
-	
+
 	public int getAverage(Connection conn) throws DAOException {
-		PreparedStatement ps;
+		Statement stmt;
 		int result;
 		try {
-			ps = conn.prepareStatement(SELECT_AVG_DURATION);
-			ResultSet rs = ps.executeQuery();
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = stmt.executeQuery(SELECT_AVG_DURATION);
 			result = rs.getInt(1);
 			rs.close();
 		} catch (SQLException sql) {
