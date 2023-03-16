@@ -6,7 +6,8 @@ public interface DAOConstants {
 	final String SELECT_STUDENT = "Select * from student";
 	final String SELECT_PROFESSOR = "Select * from professor";
 
-	final String SELECT_STUDENT_COUNT = "Select count(*) from student";
+	final String SELECT_STUDENT_COUNT = "Select count(*) from student_course where course_code = ?";
+	final String SELECT_TOT_STUDENT_COUNT = "Select count(*) from student";
 	final String SELECT_COMMENT_COUNT = "Select count(*) from course_comment";
 	final String SELECT_MOST_ATTENDED_COURSE = "Select course_name, count(*) as num from student_course group by course_name order by num desc limit 1";
 	final String SELECT_LATEST_DATE = "Select max(start_date) from course";
@@ -29,6 +30,7 @@ public interface DAOConstants {
 	final String SELECT_STUDENT_BY_CODE = "Select * from student where student_code = ?";
 	final String SELECT_PROFESSOR_BY_CODE = "Select * from professor where professor_code = ?";
 	final String SELECT_ADMIN_BY_CODE = "Select * from admin where admin_code = ?";
+	final String SELECT_ADMIN_BY_USERNAME = "Select * from admin where admin_username = ?";
 	final String SELECT_ADMINCODE_BY_USERNAME = "Select admin_code from admin where admin_username = ?";
 	final String SELECT_COMMENT_BYCODE = "Select * from course_comment where student_code = ? and course_code = ?";
 	final String SELECT_COMMENTS_BYCOURSE = "Select * from course_comment where course_code = ?";

@@ -128,6 +128,13 @@ public class AdminFacade {
 		return admin;
 	}
 	
+	public Admin getAdminByUsername(String username) throws DAOException, ClassNotFoundException, IOException {
+		Admin admin = null;
+		aBC = new AdminBC();
+		admin = aBC.getByUsername(username);
+		return admin;
+	}
+	
 	// Si sta assumendo che questo venga invocato quando uno studente sceglie di partecipare a un
 	// corso
 	public void createStudentCourse(StudentCourse sc) throws ClassNotFoundException, IOException, DAOException {
@@ -181,10 +188,17 @@ public class AdminFacade {
 		return studentsList;
 	}
 	
-	public int getStudentCount(long courseCode) throws ClassNotFoundException, IOException, SQLException {
+	public int getTotStudentCount() throws ClassNotFoundException, IOException, SQLException {
 		int count = 0;
 		sBC = new StudentBC();
-		count = sBC.getCount();
+		count = sBC.getTotCount();
+		return count;
+	}
+	
+	public int getStudentCount(long courseCode) throws ClassNotFoundException, IOException, SQLException {
+		int count = 0;
+		scBC = new StudentCourseBC();
+		count = scBC.getCountByCourse(courseCode);
 		return count;
 	}
 	

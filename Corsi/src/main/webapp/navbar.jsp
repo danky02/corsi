@@ -6,7 +6,7 @@
 		        	<span class="icon-bar"></span>
 		        	<span class="icon-bar"></span>
 		      	</button>
-		      	<a class="navbar-brand" href="admin.jsp">Admin Home</a>
+		      	<a class="navbar-brand" href="login.jsp">Admin Home</a>
 		    </div>
 		    <div class="collapse navbar-collapse" id="mioMenu">
 		    	<%
@@ -40,7 +40,7 @@
 		        </ul>
 	        	<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="profilo.jsp">
+						<a href="profile.jsp">
 						<span class="glyphicon glyphicon-user"></span>
 							<%= username %>
 						</a>

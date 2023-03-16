@@ -63,5 +63,28 @@ public class AdminDAO implements DAOConstants {
 
 		return admin;
 	}
+	
+	public Admin getByUsername(Connection conn, String username) throws DAOException {
+		Admin admin = null;
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(SELECT_ADMIN_BY_USERNAME);
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				admin = new Admin();
+				admin.setAdminName(rs.getString(1));
+				admin.setAdminSurname(rs.getString(2));
+				admin.setAdminUsername(rs.getString(3));
+				admin.setAdminCode(rs.getLong(4));
+
+			}
+			rs.close();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+
+		return admin;
+	}
 
 }

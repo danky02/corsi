@@ -41,5 +41,13 @@ public class AdminBC {
 		}
 	
 	}
+	
+	public Admin getByUsername(String username) throws DAOException {
+		try {
+			return aDAO.getByUsername(conn, username);
+		} finally {
+			DBAccess.closeConnection();
+		}
+	}
 
 }
