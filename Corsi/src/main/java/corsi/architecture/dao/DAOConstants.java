@@ -30,6 +30,7 @@ public interface DAOConstants {
 	final String SELECT_STUDENT_BY_CODE = "Select * from student where student_code = ?";
 	final String SELECT_PROFESSOR_BY_CODE = "Select * from professor where professor_code = ?";
 	final String SELECT_ADMIN_BY_CODE = "Select * from admin where admin_code = ?";
+	final String SELECT_ADMIN_BY_USERNAME = "Select * from admin where admin_username = ?";
 	final String SELECT_ADMINCODE_BY_USERNAME = "Select admin_code from admin where admin_username = ?";
 	final String SELECT_COMMENT_BYCODE = "Select * from course_comment where student_code = ? and course_code = ?";
 	final String SELECT_COMMENTS_BYCOURSE = "Select * from course_comment where course_code = ?";
