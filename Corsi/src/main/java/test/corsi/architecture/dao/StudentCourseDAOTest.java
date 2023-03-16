@@ -34,7 +34,6 @@ class StudentCourseDAOTest {
 		Student student = new Student();
 		Course course = new Course();
 		StudentCourse sc = new StudentCourse();
-		
 
 		student = new Student();
 		student.setCode(1);
@@ -75,12 +74,11 @@ class StudentCourseDAOTest {
 	@Order(2)
 	void testDeleteByCode() {
 		try {
-			StudentCourseDAO.getFactory().deleteByCode(conn , StudentCode, CourseCode);
+			StudentCourseDAO.getFactory().deleteByCode(conn, StudentCode, CourseCode);
 		} catch (SQLException e) {
 			fail("sql exception");
 			System.out.println(e.getMessage());
 		}
-
 	}
 
 	@AfterEach
