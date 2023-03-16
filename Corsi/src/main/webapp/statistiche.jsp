@@ -71,7 +71,12 @@ if (session.getAttribute("username") != null) {
 		</p>
 		<br>
 		<%
-		} 
+		} else {
+			
+		%>
+		<h5>Forza Napoli</h5>
+		<% 
+			}
 		%>
 		
 		<!-- Qua lista di tutti i corsisti -->

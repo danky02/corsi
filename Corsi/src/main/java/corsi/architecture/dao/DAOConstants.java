@@ -9,9 +9,9 @@ public interface DAOConstants {
 	final String SELECT_STUDENT_COUNT = "Select count(*) from student_course where course_code = ?";
 	final String SELECT_TOT_STUDENT_COUNT = "Select count(*) from student";
 	final String SELECT_COMMENT_COUNT = "Select count(*) from course_comment";
-	final String SELECT_MOST_ATTENDED_COURSE = "Select course_name, count(*) as num from student_course, course group by course_name having count(*) = ( select max(num) from ( Select count(*) as num from student_course group by course_name))";
+	final String SELECT_MOST_ATTENDED_COURSE = "Select course_name from student_course, course group by course_name having count(*) = ( select max(num) from ( Select count(*) as num from student_course group by course_name))";
 	final String SELECT_LATEST_DATE = "Select max(start_date) from course";
-	final String SELECT_AVG_DURATION = "Select datediff('day', data_inizio, data_fine) from course";
+	final String SELECT_AVG_DURATION = "Select start_date, end_date from course";
 	
 	final String UPDATE_COURSE = "Update course set course_name = ?, start_date = ?, end_date = ?, course_cost = ?, course_comments = ?, course_room = ?, professor_code = ? where course_code = ?";
 	final String UPDATE_STUDENT = "Update student set student_name = ?, student_surname = ?, educational_background = ? where student_code = ?";

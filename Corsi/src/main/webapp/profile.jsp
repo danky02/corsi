@@ -73,12 +73,6 @@
 						<td><%= admin.getAdminName() %><button type="submit" style="margin-left: 10px;" name="mod_field" value="name"><i class="glyphicon glyphicon-pencil"></i></button></td>
 						<td><%= admin.getAdminSurname() %><button type="submit" style="margin-left: 10px;" name="mod_field" value="surname"><i class="glyphicon glyphicon-pencil"></i></button></td>
 					</tr>
-					<tr>
-						<th>Codice Admin</th>
-					</tr>
-						<tr>
-							<td>********<button type="submit" style="margin-left: 10px;" name="mod_field" value="admincode"><i class="glyphicon glyphicon-pencil"></i></button></td>
-						</tr>
 				</tbody>
 			</table>			
 		</div>
