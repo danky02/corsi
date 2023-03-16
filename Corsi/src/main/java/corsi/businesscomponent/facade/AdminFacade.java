@@ -9,6 +9,7 @@ import java.util.List;
 import corsi.architecture.dao.DAOException;
 import corsi.businesscomponent.AdminBC;
 import corsi.businesscomponent.CourseBC;
+import corsi.businesscomponent.CourseCommentBC;
 import corsi.businesscomponent.ProfessorBC;
 import corsi.businesscomponent.StudentBC;
 import corsi.businesscomponent.StudentCourseBC;
@@ -25,6 +26,7 @@ public class AdminFacade {
 	private StudentCourseBC scBC;
 	private ProfessorBC pBC;
 	private StudentBC sBC;
+	private CourseCommentBC ccBC;
 	
 	
 	// Disclaimer: nelle chiamate di delete ho preferito usare il metodo get della facade.
@@ -221,5 +223,12 @@ public class AdminFacade {
 		courseBC = new CourseBC();
 		avgDuration = courseBC.getAverage();
 		return avgDuration;
+	}
+	
+	public int getCommCount() throws ClassNotFoundException, IOException, SQLException {
+		int count = 0;
+		ccBC = new CourseCommentBC();
+		count = ccBC.getTotCount();
+		return count;
 	}
 }

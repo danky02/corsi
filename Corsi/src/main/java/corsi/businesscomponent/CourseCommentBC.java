@@ -9,11 +9,11 @@ import corsi.architecture.dao.DAOException;
 import corsi.architecture.dbaccess.DBAccess;
 import corsi.businesscomponent.model.CourseComment;
 
-public class CourseCommnetBC {
+public class CourseCommentBC {
 	private Connection conn;
 	private CourseCommentDAO ccDAO;
 
-	public CourseCommnetBC() throws ClassNotFoundException, DAOException, IOException {
+	public CourseCommentBC() throws ClassNotFoundException, DAOException, IOException {
 		conn = DBAccess.getConnection();
 		ccDAO = CourseCommentDAO.getFactory();
 	}

@@ -1,12 +1,14 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="corsi.businesscomponent.facade.AdminFacade"%>
+<%@page import="corsi.businesscomponent.model.Student"%>
 <%
 if (session.getAttribute("username") != null) {
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="carrello"
-	class="corsi.businesscomponent.model.Student" scope="session" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +28,7 @@ if (session.getAttribute("username") != null) {
 		<p>
 			Numero di corsisti totali:
 			<strong>
-			<%= af.getStudentCount() %>
+			<%= af.getTotStudentCount() %>
 			</strong>
 		</p>
 		<br>
@@ -59,7 +61,7 @@ if (session.getAttribute("username") != null) {
 		<p>
 			Numero di commenti totali:
 			<strong>
-			<%= af.getTotCountComm()%>
+			<%= af.getCommCount()%>
 			</strong>
 		</p>
 		<br>
@@ -75,16 +77,17 @@ if (session.getAttribute("username") != null) {
 				</thead>
 				<tbody>
 					<%
-					List<Student> corsisti = af.getAllStudents();
-					while(corsisti.next()) {
+					ArrayList<Student> corsisti = new ArrayList<Student>(af.getAllStudents());
+					Iterator<Student> iterator = corsisti.iterator();
+					while(iterator.hasNext()) {
+						Student studente = iterator.next();
 					%>
 					<tr>
-						<td style="vertical-align: middle;"><%= corsisti.getNome()%></td>
-						<td style="vertical-align: middle;"><%= corsisti.getCognome%></td>
-						<td style="vertical-align: middle;"><%= corsisti.get%></td>
+						<td style="vertical-align: middle;"><%= studente.getName()%></td>
+						<td style="vertical-align: middle;"><%= studente.getSurname()%></td>
+						<td style="vertical-align: middle;"><%= studente.getBackground()%></td>
 					</tr>
 					<%
-					corsisti.next();
 					}
 					%>
 				</tbody>
@@ -96,6 +99,6 @@ if (session.getAttribute("username") != null) {
 </html>
 <%
 } else {
-response.sendRedirect(".jsp");
+response.sendRedirect("accessonegato.jsp");
 }
 %>
