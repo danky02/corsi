@@ -30,7 +30,7 @@
 						<a href="#" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span>&nbsp;Gestione&nbsp;<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="studentsmanagement.jsp">Inserisci Corsista</a>
+								<a href="studentInser.jsp">Inserisci Corsista</a>
 							</li>
 							<li>
 								<a href="#" data-toggle="modal" data-target="#editModal_0">Gestione Corsi</a>
