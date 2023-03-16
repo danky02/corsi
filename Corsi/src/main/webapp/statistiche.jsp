@@ -32,6 +32,8 @@ if (session.getAttribute("username") != null) {
 			</strong>
 		</p>
 		<br>
+		<% if(af.getPopularCourse() != null) {
+		%>
 		<p>
 			Corso con maggiore frequenza:
 			<strong>
@@ -39,6 +41,9 @@ if (session.getAttribute("username") != null) {
 			</strong>
 		</p>
 		<br>
+		<%
+		} 
+		%>
 		<p>
 			Data del corso con massima data d'inizio :
 			<strong>
