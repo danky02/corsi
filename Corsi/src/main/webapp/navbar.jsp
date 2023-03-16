@@ -27,13 +27,13 @@
 		    	<ul class="nav navbar-nav">
 			        <li><a href="statistiche.jsp"><span class="glyphicon glyphicon-stats"></span>&nbsp;Statistiche</a></li>
 					<li class="dropdown">
-						<a href="#" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;Gestione</a>
+						<a href="#" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;Gestione&nbsp;<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="gestisciArticoli.jsp">Inserisci Corsista</a>
+								<a href="studentInsert.jsp">Inserisci Corsista</a>
 							</li>
 							<li>
-								<a href="#" data-toggle="modal" data-target="#editModal_0">Inserisci Corso</a>
+								<a href="#" data-toggle="modal" data-target="#editModal_0">Gestione Corsi</a>
 							</li>
 						</ul>
 					</li>
