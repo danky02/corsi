@@ -92,7 +92,7 @@ if (session.getAttribute("username") != null) {
 						Student studente = iterator.next();
 					%>
 					<tr>
-						<td style="vertical-align: middle;"><%= studente.getName()%></td>
+						<td style="vertical-align: middle;"> <a href="/infoStudente.jsp?code=<%= studente.getCode() %>"><%= studente.getName()%></a>  </td>
 						<td style="vertical-align: middle;"><%= studente.getSurname()%></td>
 						<td style="vertical-align: middle;"><%= studente.getBackground()%></td>
 					</tr>
