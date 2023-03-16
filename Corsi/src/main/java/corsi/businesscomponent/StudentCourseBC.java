@@ -27,7 +27,7 @@ public class StudentCourseBC {
 
 	public void deleteByCode (long studentCode, long courseCode) throws DAOException {
 		try {
-			// scDAO.deleteByCode(conn, studentCode, courseCode)
+			scDAO.deleteByCode(conn, studentCode, courseCode);
 		} finally {
 			DBAccess.closeConnection();
 		}

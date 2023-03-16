@@ -2,21 +2,27 @@ package corsi.businesscomponent;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import corsi.architecture.dao.CourseDAO;
 import corsi.architecture.dao.DAOException;
+import corsi.architecture.dao.StudentCourseDAO;
 import corsi.architecture.dbaccess.DBAccess;
 import corsi.businesscomponent.model.Course;
+import corsi.businesscomponent.model.Student;
+import corsi.businesscomponent.model.StudentCourse;
 
 public class CourseBC {
 	private Connection conn;
 	private CourseDAO cDAO;
+	private StudentCourseDAO scDAO;
 
 	public CourseBC() throws ClassNotFoundException, DAOException, IOException {
 		conn = DBAccess.getConnection();
 		cDAO = CourseDAO.getFactory();
+		scDAO = StudentCourseDAO.getFactory();
 	}
 	
 	public void create(Course course) throws ClassNotFoundException, DAOException, IOException {
@@ -111,5 +117,22 @@ public class CourseBC {
 			DBAccess.closeConnection();
 		}
 		return result;
+	}
+	
+	public List<Course> getCoursesByStudent(Student student) throws DAOException { 
+		List<Course> courses = new ArrayList<Course>();
+		
+		try {
+			List<StudentCourse> studentCourses = scDAO.getByStudent(conn, student.getCode());
+			
+			for (StudentCourse studentCourse : studentCourses) {
+				Course course = cDAO.getByCode(conn, studentCourse.getCourseCode());
+				courses.add(course);
+			}			
+		} finally {
+			DBAccess.closeConnection();
+		}
+		
+		return courses;
 	}
 }

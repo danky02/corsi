@@ -205,13 +205,14 @@ class StudentDAOTest {
 	@Test
 	void testGetCount() {
 		try {
-			int count = dao.getCount(conn);
+			int count = dao.getTotCount(conn);
 			if (count != 3) {
 				fail("data mismatch");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.err.println(e.getMessage());
 			e.printStackTrace();
+			fail("sql exception");
 		}
 		
 		System.out.println("test testGetCount completato con successo");
