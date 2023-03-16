@@ -5,6 +5,8 @@ if (session.getAttribute("username") != null) {
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:useBean id="carrello"
+	class="corsi.businesscomponent.model.Student" scope="session" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,7 @@ if (session.getAttribute("username") != null) {
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<jsp:include page="nav.jsp" />
+	<jsp:include page="navbar.jsp" />
 
 	<div class="container">
 		<header class="page-header">
@@ -77,10 +79,9 @@ if (session.getAttribute("username") != null) {
 					while(corsisti.next()) {
 					%>
 					<tr>
-						<td style="vertical-align: middle;"><%= %></td>
-						<td style="vertical-align: middle;"><%=.getNome()%></td>
-						<td style="vertical-align: middle;"><%=.getCognome%></td>
-						<td style="vertical-align: middle;"><%=.get%></td>
+						<td style="vertical-align: middle;"><%= corsisti.getNome()%></td>
+						<td style="vertical-align: middle;"><%= corsisti.getCognome%></td>
+						<td style="vertical-align: middle;"><%= corsisti.get%></td>
 					</tr>
 					<%
 					corsisti.next();
