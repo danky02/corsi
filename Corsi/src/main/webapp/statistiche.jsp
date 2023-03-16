@@ -97,7 +97,7 @@ if (session.getAttribute("username") != null) {
 						<td style="vertical-align: middle;"><%= studente.getBackground()%></td>
 					</tr>
 					<%
-					}
+						}
 					%>
 				</tbody>
 			</table>
