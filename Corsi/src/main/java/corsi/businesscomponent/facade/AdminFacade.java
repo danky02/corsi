@@ -2,6 +2,7 @@ package corsi.businesscomponent.facade;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -97,13 +98,17 @@ public class AdminFacade {
 	}
 	
 	public Professor getProfessorByCode(long code) throws ClassNotFoundException, IOException, DAOException {
+		Professor professor = null;
 		pBC = new ProfessorBC();
-		return pBC.getByCode(code);
+		professor = pBC.getByCode(code);
+		return professor;
 	}
 	
 	public List<Professor> getAllProfessors() throws ClassNotFoundException, IOException, DAOException {
+		List<Professor> professorsList = new ArrayList<Professor>();
 		pBC = new ProfessorBC();
-		return pBC.getAll();
+		professorsList = pBC.getAll();
+		return professorsList;
 	}
 	
 	public void updateAdmin(Admin admin) throws ClassNotFoundException, IOException, DAOException {
@@ -117,8 +122,10 @@ public class AdminFacade {
 	}
 	
 	public Admin getAdminByCode(long code) throws ClassNotFoundException, IOException, DAOException {
+		Admin admin = null;
 		aBC = new AdminBC();
-		return aBC.getByCode(code);
+		admin = aBC.getByCode(code);
+		return admin;
 	}
 	
 	// Si sta assumendo che questo venga invocato quando uno studente sceglie di partecipare a un
@@ -161,32 +168,44 @@ public class AdminFacade {
 	}
 	
 	public Student getStudentByCode(long code) throws ClassNotFoundException, IOException, SQLException {
+		Student student = null;
 		sBC = new StudentBC();
-		return sBC.getByCode(code);
+		student = sBC.getByCode(code);
+		return student;
 	}
 
 	public List<Student> getAllStudents() throws ClassNotFoundException, IOException, SQLException {
+		List<Student> studentsList = new ArrayList<Student>();
 		sBC = new StudentBC();
-		return sBC.getAll();
+		studentsList = sBC.getAll();
+		return studentsList;
 	}
 	
 	public int getStudentCount(long courseCode) throws ClassNotFoundException, IOException, SQLException {
+		int count = 0;
 		sBC = new StudentBC();
-		return sBC.getCount();
+		count = sBC.getCount();
+		return count;
 	}
 	
 	public String getPopularCourse() throws ClassNotFoundException, IOException, SQLException {
+		String popCourse = null;
 		courseBC = new CourseBC();
-		return courseBC.getMostPopular();
+		popCourse = courseBC.getMostPopular();
+		return popCourse;
 	}
 	
 	public Date getLatestCourseDate() throws ClassNotFoundException, IOException, SQLException {
+		Date date = null;
 		courseBC = new CourseBC();
-		return courseBC.getLatest();
+		date = courseBC.getLatest();
+		return date;
 	}
 	
 	public int getAverageDuration() throws ClassNotFoundException, IOException, SQLException {
+		int avgDuration = 0;
 		courseBC = new CourseBC();
-		return courseBC.getAverage();
+		avgDuration = courseBC.getAverage();
+		return avgDuration;
 	}
 }

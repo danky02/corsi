@@ -42,5 +42,13 @@ admin_code int,
 constraint pk_admin_code primary key(admin_code)
 );
 
+create table course_comment(
+student_code int,
+course_code int,
+comment_description varchar2(30),
+constraint fk_cstd_code foreign key(student_code) references student(student_code),
+constraint fk_ccrs_code foreign key(course_code) references course(course_code)
+);
+
 create sequence student_seq;
 create sequence course_seq;

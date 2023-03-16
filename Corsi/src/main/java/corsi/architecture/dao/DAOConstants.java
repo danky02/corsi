@@ -6,11 +6,11 @@ public interface DAOConstants {
 	final String SELECT_STUDENT = "Select * from student";
 	final String SELECT_PROFESSOR = "Select * from professor";
 
-	final String SELECT_STUDENT_COUNT = "SELECT COUNT(*) FROM STUDENT";
-	final String SELECT_COMMENT_COUNT = "SELECT COUNT(*) FROM COMMENT";
+	final String SELECT_STUDENT_COUNT = "Select count(*) from student";
+	final String SELECT_COMMENT_COUNT = "Select count(*) from course_comment";
 	final String SELECT_MOST_ATTENDED_COURSE = "Select course_name, count(*) as num from student_course group by course_name order by num desc limit 1";
-	final String SELECT_LATEST_DATE = "SELECT MAX(start_date) FROM course";
-	final String SELECT_AVG_DURATION = "SELECT DATEDIFF('day', data_inizio, data_fine) FROM course";
+	final String SELECT_LATEST_DATE = "Select max(start_date) from course";
+	final String SELECT_AVG_DURATION = "Select datediff('day', data_inizio, data_fine) from course";
 	
 	final String UPDATE_COURSE = "Update course set course_name = ?, start_date = ?, end_date = ?, course_cost = ?, course_comments = ?, course_room = ?, professor_code = ? where course_code = ?";
 	final String UPDATE_STUDENT = "Update student set student_name = ?, student_surname = ?, educational_background = ? where student_code = ?";
@@ -23,13 +23,15 @@ public interface DAOConstants {
 	final String DELETE_ADMIN = "Delete from admin where admin_code = ?";
 	final String DELETE_STUDENT_COURSE = "Delete from student_course where student_code = ? and course_code=?";
 	final String DELETE_COURSE_BY_CODE = "Delete from course where course_code= ?";
+	final String DELETE_COMMENT_BYCODE = "Delete from course_comment where student_code = ? and course_code = ?";
 
 	final String SELECT_COURSE_BY_CODE = "Select * from course where course_code = ?";
 	final String SELECT_STUDENT_BY_CODE = "Select * from student where student_code = ?";
 	final String SELECT_PROFESSOR_BY_CODE = "Select * from professor where professor_code = ?";
 	final String SELECT_ADMIN_BY_CODE = "Select * from admin where admin_code = ?";
 	final String SELECT_ADMINCODE_BY_USERNAME = "Select admin_code from admin where admin_username = ?";
-
+	final String SELECT_COMMENT_BYCODE = "Select * from course_comment where student_code = ? and course_code = ?";
+	final String SELECT_COMMENTS_BYCOURSE = "Select * from course_comment where course_code = ?";
 	
 	// Sequence
 	final String SELECT_STUDENT_SEQ = "select student_seq.nextval from dual";
