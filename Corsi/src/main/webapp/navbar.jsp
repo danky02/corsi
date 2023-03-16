@@ -25,9 +25,9 @@
 		    		} else {
 		    	%>
 		    	<ul class="nav navbar-nav">
-			        <li><a href="statistiche.jsp">Statistiche</a></li>
+			        <li><a href="statistiche.jsp"><span class="glyphicon glyphicon-stats"></span>&nbsp;Statistiche</a></li>
 					<li class="dropdown">
-						<a href="#" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">Gestione</a>
+						<a href="#" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;Gestione</a>
 						<ul class="dropdown-menu">
 							<li>
 								<a href="gestisciArticoli.jsp">Inserisci Corsista</a>
