@@ -156,6 +156,7 @@ public class CourseDAO implements DAOConstants {
 		try {
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = stmt.executeQuery(SELECT_MOST_ATTENDED_COURSE);
+			rs.next();
 			result = rs.getString("course_name");
 			rs.close();
 		} catch (SQLException sql) {
