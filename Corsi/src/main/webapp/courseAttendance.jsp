@@ -13,14 +13,14 @@ if (session.getAttribute("username") != null) {
 <head>
 <%@ include file="CDN.html"%>
 <meta charset="UTF-8">
-<title>Student List</title>
+<title>Lista Studenti</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
 	<div class="container">
 		<header class="page-header">
-			<h2>Student Courses Registration</h2>
+			<h2>Studenti Registrati</h2>
 		</header>
 		
 		<h3>Student: </h3>
@@ -29,8 +29,8 @@ if (session.getAttribute("username") != null) {
 			<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>Student Name</th>
-					<th>Student Surname</th>
+					<th>Nome</th>
+					<th>Cognome</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -50,8 +50,13 @@ if (session.getAttribute("username") != null) {
 		<form style="float: right;"
 			action="/<%=application.getServletContextName()%>/studentInsert.jsp"
 			method="post">
-			<button type="submit" class="btn btn-primary btn-xs">
-				Add Student</button>
+			<button type="submit" class="btn btn-info btn-xs">
+						
+				Aggiungi 
+				<span>
+					<i class="glyphicon glyphicon-user"></i>
+				</span>
+			</button>
 		</form>
 	</div>	
 </div>	
