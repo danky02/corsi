@@ -184,11 +184,11 @@ public class CourseDAO implements DAOConstants {
 
 	public double getAverage(Connection conn) throws DAOException {
 		Statement stmt;
-		int result = 0;
+		double result = 0;
 		try {
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = stmt.executeQuery(SELECT_DATE_AVG);
-			result = rs.getInt(1);
+			result = rs.getDouble(1);
 			rs.close();
 		} catch (SQLException sql) {
 			throw new DAOException(sql);

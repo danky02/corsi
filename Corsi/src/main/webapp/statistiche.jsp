@@ -35,7 +35,7 @@ if (session.getAttribute("username") != null) {
 		<% 
 			String tmpCourse = null;
 			tmpCourse = af.getPopularCourse();
-			if(tmpCourse != null) {
+			if(true) {
 		%>
 		<p>
 			Corso con maggiore frequenza:
@@ -79,7 +79,7 @@ if (session.getAttribute("username") != null) {
 					<tr>
 						<th>Nome</th>
 						<th>Cognome</th>
-						<th>Titolo di studio</th>
+						<th>Precedenti formativi</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -92,7 +92,7 @@ if (session.getAttribute("username") != null) {
 					<tr>
 						<td style="vertical-align: middle;"> <a href="infoStudente.jsp?code=<%= studente.getCode() %>"><%= studente.getName()%></a>  </td>
 						<td style="vertical-align: middle;"> <a href="infoStudente.jsp?code=<%= studente.getCode() %>"><%= studente.getSurname()%></a></td>
-						<td style="vertical-align: middle;"><%= studente.getBackground()%></td>
+						<td style="vertical-align: middle;"><%= studente.getBackground() ? "Si" : "No" %></td>
 					</tr>
 					<%
 						}

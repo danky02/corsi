@@ -9,4 +9,8 @@ insert into student values('Babbo', 'Natale', 	100001, 1);
 insert into student values('Giovanni', 'Verga', 100002, 0);
 insert into student values('Dante', 'Alighieri',100003, 1);
 
+insert into course values(1, 'Java for dummies', '10-OCT-23', '11-OCT-23', 1999, '', 'A69', 3);
+insert into course values(2, 'C# for dummies', '15-NOV-23', '22-NOV-23', 1555, '', 'A33', 1);
+insert into course values(3, 'Academy di Giava', '2-DEC-23', '12-DEC-23', 1222, '', 'A22', 2);
+
 commit
