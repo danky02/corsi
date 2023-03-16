@@ -8,7 +8,7 @@ public class Professor implements Serializable {
 	private String name;
 	private String surname;
 	private String cv;
-	private Long code;
+	private long code;
 	
 	public Professor() {
 		
@@ -38,11 +38,11 @@ public class Professor implements Serializable {
 		this.cv = cv;
 	}
 
-	public Long getCode() {
+	public long getCode() {
 		return code;
 	}
 
-	public void setCode(Long code) {
+	public void setCode(long code) {
 		this.code = code;
 	}
 

@@ -70,13 +70,8 @@ if (session.getAttribute("username") != null) {
 			</strong>
 		</p>
 		<br>
-		<%
-		} else {
-			
-		%>
-		<h5>Forza Napoli</h5>
 		<% 
-			}
+		}
 		%>
 		
 		<!-- Qua lista di tutti i corsisti -->
@@ -113,6 +108,6 @@ if (session.getAttribute("username") != null) {
 </html>
 <%
 } else {
-response.sendRedirect("accessonegato.jsp");
+	response.sendRedirect("accessonegato.jsp");
 }
 %>

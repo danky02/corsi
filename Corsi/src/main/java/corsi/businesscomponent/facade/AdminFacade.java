@@ -218,8 +218,8 @@ public class AdminFacade {
 		return date;
 	}
 	
-	public int getAverageDuration() throws ClassNotFoundException, IOException, SQLException {
-		int avgDuration = 0;
+	public double getAverageDuration() throws ClassNotFoundException, IOException, SQLException {
+		double avgDuration = 0;
 		courseBC = new CourseBC();
 		avgDuration = courseBC.getAverage();
 		return avgDuration;
@@ -230,5 +230,12 @@ public class AdminFacade {
 		ccBC = new CourseCommentBC();
 		count = ccBC.getTotCount();
 		return count;
+	}
+	
+	public List<Integer> getDiff() throws ClassNotFoundException, IOException, SQLException {
+		List<Integer> result = null;
+		courseBC = new CourseBC();
+		result = courseBC.getDiff();
+		return result;
 	}
 }

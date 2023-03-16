@@ -182,17 +182,34 @@ public class CourseDAO implements DAOConstants {
 		return result;
 	}
 
-	public int getAverage(Connection conn) throws DAOException {
+	public double getAverage(Connection conn) throws DAOException {
 		Statement stmt;
-		int result;
+		int result = 0;
 		try {
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = stmt.executeQuery(SELECT_AVG_DURATION);
+			ResultSet rs = stmt.executeQuery(SELECT_DATE_AVG);
 			result = rs.getInt(1);
 			rs.close();
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
 		return result;
+	}
+	
+	public List<Integer> getDateDiff(Connection conn) throws DAOException {
+		Statement stmt;
+		List<Integer> differences = new ArrayList<Integer>();
+		try {
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = stmt.executeQuery(SELECT_DATE_DIFF);
+			rs.beforeFirst();
+			while (rs.next()) {
+				differences.add(rs.getInt(1));
+			}
+			rs.close();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return differences;
 	}
 }

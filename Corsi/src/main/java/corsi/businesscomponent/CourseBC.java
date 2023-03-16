@@ -83,13 +83,23 @@ public class CourseBC {
 		return date;
 	}
 	
-	public int getAverage() throws DAOException {
-		int avg = 0;
+	public double getAverage() throws DAOException {
+		double avg = 0;
 		try{
 			avg = cDAO.getAverage(conn);
 		} finally {
 			DBAccess.closeConnection();
 		}
 		return avg;
+	}
+	
+	public List<Integer> getDiff() throws DAOException {
+		List<Integer> result = null;
+		try {
+			result = cDAO.getDateDiff(conn);
+		} finally {
+			DBAccess.closeConnection();
+		}
+		return result;
 	}
 }
