@@ -22,33 +22,33 @@ if (session.getAttribute("username") != null) {
 	<div class="container">
 		
 		<header class="page-header">
-			<h3>Insert new Student</h3>
+			<h3>Inserisci nuovo corsista</h3>
 		</header>
 
 		<form id="form" action="/<%=application.getServletContextName()%>/createStudent" method="post" class="form-horizontal">
 			<!-- Name -->
 			<div class="form-group">
-				<label class="col-md-2 control-label">Name</label>
+				<label class="col-md-2 control-label">Nome</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-						<input type="text" placeholder="Your Name" name="name" class="form-control">
+						<input type="text" placeholder="Nome..." name="name" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-6 error" id="infoStudentName"></div>
 			</div>
 			<!-- Surname -->
 			<div class="form-group">
-				<label class="col-md-2 control-label">Surname</label>
+				<label class="col-md-2 control-label">Cognome</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-						<input type="text" placeholder="Your Surname" name="surname" class="form-control">
+						<input type="text" placeholder="Cognome..." name="surname" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-6 error" id="infoStudentSurname"></div>
 			</div>
 			<!-- Background checkbox -->
 			<div class="form-group">
-				<label class="col-md-2 control-label">Has Background</label>
+				<label class="col-md-2 control-label">Precedenti Formativi</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<input id='backgroundCheckbox' 			type='checkbox' value='true' name='background' class="form-control">
@@ -60,7 +60,7 @@ if (session.getAttribute("username") != null) {
 			<!-- Submit button -->
 			<div class="row">
 				<div class="col-md-4 col-md-offset-2">
-					<button type="submit" class="btn btn-primary">Register student&nbsp;&nbsp;<span class="glyphicon glyphicon-send"></span>
+					<button type="submit" class="btn btn-primary">Registra corsista&nbsp;&nbsp;<span class="glyphicon glyphicon-send"></span>
 					</button>
 				</div>
 			</div>

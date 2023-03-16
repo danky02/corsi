@@ -30,14 +30,14 @@
 	 				<i class="glyphicon glyphicon-user"></i>
 	 			</span>
 	 			<input class="form-control" type="text" readonly value= "<%= AdminFacade.getInstance().getAdminByUsername((String)session.getAttribute("username")).getAdminName()%>"
-	 			id="nome" name="nome">
+	 			id="name" name="name">
 	 			<input type="hidden" name="username" value="<%=session.getAttribute("username") %>">
 	 		</div>
+			 	<div class="col-md-7 error" id="infoStudentName"></div>
 	 	</div>
 		<button class="btn btn-primary" type="button" onclick="modifica('nome')">
 			<i class="glyphicon glyphicon-pencil"></i>
 		</button>
-	 	<div class="col-md-7 error" id="infoStudentName"></div>
 	</div>
 	<div class="form-group">
 	 	<label class="col-md-1 control-label">Cognome</label>
@@ -47,24 +47,22 @@
 		 			<i class="glyphicon glyphicon-user"></i>
 		 		</span>
 		 		<input class="form-control" type="text" readonly value= "<%= AdminFacade.getInstance().getAdminByUsername((String)session.getAttribute("username")).getAdminSurname()%>"
-		 			id="cognome" name="cognome">
+		 			id="surname" name="surname">
 		 		<input type="hidden" name="username" value="<%=session.getAttribute("username") %>">
 		 	</div>
+			 	<div class="col-md-7 error" id="infoStudentSurname"></div>
 		 </div>
 	 		<button class="btn btn-primary" type="button" onclick="modifica('cognome')">
 	 			<i class="glyphicon glyphicon-pencil"></i>
 	 		</button>
-		 	<div class="col-md-7 error" id="infoStudentSurname">
-		</div>	
 	</div>
-
-<div class="row">
-	<div class="col-md-4 col-md-off-set-1">
-		<button type="submit" class="btn btn-info">
-	 		Modifica&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></span>
-	 	</button>
+	<div class="row">
+		<div class="col-md-4 col-md-off-set-1">
+			<button type="submit" class="btn btn-info">
+		 		Modifica&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></span>
+		 	</button>
+		</div>
 	</div>
-</div>
 </form>
 </div>
 </body>
