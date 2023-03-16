@@ -44,9 +44,6 @@ if (session.getAttribute("username") != null) {
 			</strong>
 		</p>
 		<br>
-		<%
-		} 
-		%>
 		<p>
 			Data del corso con massima data d'inizio :
 			<strong>
@@ -73,6 +70,9 @@ if (session.getAttribute("username") != null) {
 			</strong>
 		</p>
 		<br>
+		<%
+		} 
+		%>
 		
 		<!-- Qua lista di tutti i corsisti -->
 		<div class="table-responsive">
