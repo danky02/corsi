@@ -11,7 +11,10 @@ if (session.getAttribute("username") != null) {
 <%@ include file="CDN.html"%>
 <meta charset="UTF-8">
 <title>Student Insert</title>
+
 <link rel="stylesheet" href="css/style.css">
+<script src="js/validazione.js"></script>
+
 </head>
 <body>
 
@@ -31,6 +34,7 @@ if (session.getAttribute("username") != null) {
 						<input type="text" placeholder="Your Name" name="name" class="form-control">
 					</div>
 				</div>
+				<div class="col-md-6 error" id="infoStudentName"></div>
 			</div>
 			<!-- Surname -->
 			<div class="form-group">
@@ -40,6 +44,7 @@ if (session.getAttribute("username") != null) {
 						<input type="text" placeholder="Your Surname" name="surname" class="form-control">
 					</div>
 				</div>
+				<div class="col-md-6 error" id="infoStudentSurname"></div>
 			</div>
 			<!-- Background checkbox -->
 			<div class="form-group">
@@ -52,7 +57,7 @@ if (session.getAttribute("username") != null) {
 				</div>
 			</div>
 						
-			<!-- Background checkbox -->
+			<!-- Submit button -->
 			<div class="row">
 				<div class="col-md-4 col-md-offset-2">
 					<button type="submit" class="btn btn-primary">Register student&nbsp;&nbsp;<span class="glyphicon glyphicon-send"></span>
@@ -68,9 +73,7 @@ if (session.getAttribute("username") != null) {
 	const backgroundCheckboxHidden = document.getElementById('backgroundCheckboxHidden');
 	
 	form.addEventListener('submit', () => {
-	    if(backgroundCheckbox.checked) {
-	    	backgroundCheckboxHidden.disabled = true;
-	    }
+		backgroundCheckboxHidden.disabled = backgroundCheckbox.checked;
 	}
 	</script>
 

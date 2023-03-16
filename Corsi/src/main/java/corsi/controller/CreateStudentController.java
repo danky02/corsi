@@ -43,7 +43,7 @@ public class CreateStudentController extends HttpServlet {
 			StudentBC studentBC = new StudentBC();
 			studentBC.create(student);
 			
-			
+			response.sendRedirect("courseAttendance.jsp");
 		} catch (Exception redirectException) {
 			redirectException.printStackTrace();
 			// redirect to error
