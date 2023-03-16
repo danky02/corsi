@@ -61,8 +61,6 @@ if (session.getAttribute("username") != null) {
 			</strong>
 		</p>
 		<br>
-		<!-- Qua da aggiustare perché non so come prenderli
-			 Manca DAO, BC e AdminFacade -->
 		<p>
 			Numero di commenti totali:
 			<strong>
