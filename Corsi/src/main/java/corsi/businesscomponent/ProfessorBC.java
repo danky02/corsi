@@ -65,5 +65,16 @@ public class ProfessorBC {
 		
 		return professorList;
 	}
+	
+	public List<Professor> getMulti() throws DAOException {
+		List<Professor> professorList = null;
+		try {
+			professorList = pDAO.getMulti(conn);			
+		} finally {
+			DBAccess.closeConnection();			
+		}
+		
+		return professorList;
+	}
 
 }

@@ -156,7 +156,7 @@ public class CourseDAO implements DAOConstants {
 		try {
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = stmt.executeQuery(SELECT_MOST_ATTENDED_COURSE);
-			if(rs.next()) {
+			if (rs.next()) {
 				result = rs.getString("course_name");
 			}
 			rs.close();
@@ -172,7 +172,7 @@ public class CourseDAO implements DAOConstants {
 		try {
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = stmt.executeQuery(SELECT_LATEST_DATE);
-			if(rs.next()) {
+			if (rs.next()) {
 				result = new Date(rs.getDate(1).getTime());
 			}
 			rs.close();
@@ -195,7 +195,7 @@ public class CourseDAO implements DAOConstants {
 		}
 		return result;
 	}
-	
+
 	public List<Integer> getDateDiff(Connection conn) throws DAOException {
 		Statement stmt;
 		List<Integer> differences = new ArrayList<Integer>();
@@ -211,5 +211,24 @@ public class CourseDAO implements DAOConstants {
 			throw new DAOException(sql);
 		}
 		return differences;
+	}
+
+	public List<Course> getFree(Connection conn) throws DAOException {
+		Statement stmt;
+		List<Course> free = new ArrayList<Course>();
+		try {
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = stmt.executeQuery(SELECT_AVAILABLE_COURSES);
+			rs.beforeFirst();
+			while (rs.next()) {
+				Course course = new Course();
+				course.setCourseName(rs.getString(1));
+				free.add(course);
+			}
+			rs.close();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return free;
 	}
 }

@@ -118,5 +118,23 @@ public class ProfessorDAO implements DAOConstants {
 		}
 		return professorList;
 	}
+	
+	public List<Professor> getMulti(Connection conn) throws DAOException {
+		List<Professor> professorList = new ArrayList<>();
+		try {
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+			ResultSet rs = stmt.executeQuery(SELECT_MULTI_PROF);
+			while (rs.next()) {
+				Professor professor = new Professor();
+				professor.setName(rs.getString(1));
+				professor.setSurname(rs.getString(2));
+				professorList.add(professor);
+			}
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return professorList;
+	}
 
 }

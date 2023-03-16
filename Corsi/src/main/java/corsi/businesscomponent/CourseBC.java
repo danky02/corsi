@@ -102,4 +102,14 @@ public class CourseBC {
 		}
 		return result;
 	}
+	
+	public List<Course> getFree() throws DAOException {
+		List<Course> result = null;
+		try {
+			result = cDAO.getFree(conn);
+		} finally {
+			DBAccess.closeConnection();
+		}
+		return result;
+	}
 }

@@ -238,4 +238,18 @@ public class AdminFacade {
 		result = courseBC.getDiff();
 		return result;
 	}
+	
+	public List<Professor> getMultiProfs() throws ClassNotFoundException, IOException, SQLException {
+		List<Professor> result = null;
+		pBC = new ProfessorBC();
+		result = pBC.getMulti();
+		return result;
+	}
+	
+	public List<Course> getFreeCourses() throws ClassNotFoundException, IOException, SQLException {
+		List<Course> result = null;
+		courseBC = new CourseBC();
+		result = courseBC.getFree();
+		return result;
+	}
 }
