@@ -6,7 +6,8 @@ public interface DAOConstants {
 	final String SELECT_STUDENT = "Select * from student";
 	final String SELECT_PROFESSOR = "Select * from professor";
 
-	final String SELECT_STUDENT_COUNT = "Select count(*) from student";
+	final String SELECT_STUDENT_COUNT = "Select count(*) from student_course where course_code = ?";
+	final String SELECT_TOT_STUDENT_COUNT = "Select count(*) from student";
 	final String SELECT_COMMENT_COUNT = "Select count(*) from course_comment";
 	final String SELECT_MOST_ATTENDED_COURSE = "Select course_name, count(*) as num from student_course group by course_name order by num desc limit 1";
 	final String SELECT_LATEST_DATE = "Select max(start_date) from course";

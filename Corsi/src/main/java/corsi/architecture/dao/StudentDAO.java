@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,14 +91,15 @@ public class StudentDAO implements DAOConstants {
 		return students;
 	}
 	
-	public int getCount(Connection conn) throws SQLException {
-		PreparedStatement stmt = conn.prepareStatement(SELECT_STUDENT_COUNT);
-		ResultSet rs = stmt.executeQuery();
-
-		int count = 0;
+	public int getTotCount(Connection conn) throws SQLException {
+		int count = -1;
+		Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet rs = stmt.executeQuery(SELECT_TOT_STUDENT_COUNT);
 		if (rs.next())
 			count = rs.getInt(1);
 		
+		stmt.close();
+		rs.close();
 		return count;
 	}
 }

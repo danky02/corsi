@@ -32,4 +32,14 @@ public class StudentCourseBC {
 			DBAccess.closeConnection();
 		}
 	}
+	
+	public int getCountByCourse (long courseCode) throws DAOException {
+		int result = -1;
+		try {
+			result = scDAO.getStudentCount(conn, courseCode);
+		} finally {
+			DBAccess.closeConnection();
+		}
+		return result;
+	}
 }

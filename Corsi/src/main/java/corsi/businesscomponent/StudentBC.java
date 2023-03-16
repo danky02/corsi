@@ -77,10 +77,10 @@ public class StudentBC {
 	}
 	
 	// getCount() int
-	public int getCount() throws SQLException {
+	public int getTotCount() throws SQLException {
 		int result = -1;
 		try {
-			result = StudentDAO.getFactory().getCount(conn);
+			result = StudentDAO.getFactory().getTotCount(conn);
 		}finally {
 			DBAccess.closeConnection();
 		}

@@ -2,6 +2,7 @@ package corsi.architecture.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
@@ -46,5 +47,22 @@ public class StudentCourseDAO implements DAOConstants {
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
+	}
+	
+	public int getStudentCount(Connection conn, long courseCode) throws DAOException {
+		PreparedStatement ps;
+		ResultSet rs;
+		int count = -1;
+		try {
+			ps= conn.prepareStatement(SELECT_STUDENT_COUNT);
+			ps.setLong(1, courseCode);
+			rs = ps.executeQuery();
+			rs.next();
+			count = rs.getInt("1");
+			rs.close();			
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return count;
 	}
 }

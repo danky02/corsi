@@ -181,10 +181,17 @@ public class AdminFacade {
 		return studentsList;
 	}
 	
-	public int getStudentCount(long courseCode) throws ClassNotFoundException, IOException, SQLException {
+	public int getTotStudentCount() throws ClassNotFoundException, IOException, SQLException {
 		int count = 0;
 		sBC = new StudentBC();
-		count = sBC.getCount();
+		count = sBC.getTotCount();
+		return count;
+	}
+	
+	public int getStudentCount(long courseCode) throws ClassNotFoundException, IOException, SQLException {
+		int count = 0;
+		scBC = new StudentCourseBC();
+		count = scBC.getCountByCourse(courseCode);
 		return count;
 	}
 	
