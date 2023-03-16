@@ -157,7 +157,7 @@ public class CourseDAO implements DAOConstants {
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = stmt.executeQuery(SELECT_MOST_ATTENDED_COURSE);
 			if (rs.next()) {
-				result = rs.getString("course_name");
+				result = rs.getString(1);
 			}
 			rs.close();
 		} catch (SQLException sql) {
@@ -188,6 +188,7 @@ public class CourseDAO implements DAOConstants {
 		try {
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = stmt.executeQuery(SELECT_DATE_AVG);
+			rs.next();
 			result = rs.getDouble(1);
 			rs.close();
 		} catch (SQLException sql) {
