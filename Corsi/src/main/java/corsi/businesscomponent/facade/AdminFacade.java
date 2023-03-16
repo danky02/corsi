@@ -176,8 +176,10 @@ public class AdminFacade {
 	}
 	
 	public String getPopularCourse() throws ClassNotFoundException, IOException, SQLException {
+		String popCourse = null;
 		courseBC = new CourseBC();
-		return courseBC.getMostPopular();
+		popCourse = courseBC.getMostPopular();
+		return popCourse;
 	}
 	
 	public Date getLatestCourseDate() throws ClassNotFoundException, IOException, SQLException {
