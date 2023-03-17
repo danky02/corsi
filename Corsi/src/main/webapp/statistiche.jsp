@@ -1,3 +1,4 @@
+<%@page import="java.sql.Timestamp"%>
 <%@page import="corsi.businesscomponent.model.Course"%>
 <%@page import="corsi.businesscomponent.model.Professor"%>
 <%@page import="java.util.Iterator"%>
@@ -61,7 +62,7 @@ if (session.getAttribute("username") != null) {
 					</strong>
 				</p>
 				<p>
-					Durata media dei corsi: <strong> <%=String.format("%.2f", af.getAverageDuration())%>
+					Durata media dei corsi: <strong> <%=String.format("%.02f giorni", af.getAverageDuration())%>
 					</strong>
 				</p>
 				<p>
@@ -76,6 +77,7 @@ if (session.getAttribute("username") != null) {
 
 			<%
 			ArrayList<Course> corsi2 = new ArrayList<Course>(af.getFreeCourses());
+			ArrayList<Course> corsi3 = new ArrayList<Course>(af.getFreeCourses());
 			if (!corsi2.isEmpty()) {
 			%>
 			<div
@@ -91,7 +93,7 @@ if (session.getAttribute("username") != null) {
 						Course corso = iterator3.next();%> "<%=corso.getCourseName()%>", <%}%>],
 							
 				datasets: [{
-					data: [<%Iterator<Course> iterator4 = corsi2.iterator();
+					data: [<%Iterator<Course> iterator4 = corsi3.iterator();
 						while (iterator4.hasNext()) {
 							Course corso = iterator4.next();%><%=corso.getFreeSeats()%>,<%}%>],
 							
@@ -124,7 +126,7 @@ if (session.getAttribute("username") != null) {
 					text: 'Posti liberi per corso'
 				},
 				
-				cutoutPercentage: 50,
+				cutoutPercentage: 30,
 				
 				legend: {
 					position: 'bottom',
