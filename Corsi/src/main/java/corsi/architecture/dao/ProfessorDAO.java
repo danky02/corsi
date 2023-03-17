@@ -87,8 +87,8 @@ public class ProfessorDAO implements DAOConstants {
 				professor = new Professor();
 				professor.setName(rs.getString(1));
 				professor.setSurname(rs.getString(2));
-				professor.setCv(rs.getString(4));
-				professor.setCode(rs.getLong(5));
+				professor.setCv(rs.getString(3));
+				professor.setCode(rs.getLong(4));
 			}
 			rs.close();
 		} catch (SQLException sql) {

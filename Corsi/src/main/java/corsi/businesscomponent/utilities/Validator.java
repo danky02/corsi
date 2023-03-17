@@ -37,6 +37,7 @@ public class Validator {
 	
 	
 	public Boolean isValidCourse(Course course) throws ParseException {
+		System.out.println(course);
 		if(isValidCourseName(course.getCourseName()) && isValidTimeFrame(course.getStartDate(), course.getEndDate()) && isValidClassroom(course.getCourseRoom()) && isValidProfessor(course.getProfessorCode()))
 			return true;
 		return false;
@@ -61,6 +62,7 @@ public class Validator {
 					return false;
 			return true;
 		}
+		System.out.println("Fallita validazione nome corso");
 		return false;
 	}
 	
@@ -82,6 +84,7 @@ public class Validator {
 //		System.out.println(startDate.get(Calendar.YEAR));
 		if(endDate.getTimeInMillis() >= startDate.getTimeInMillis())
 			return true;
+		System.out.println("Fallita validazione timeframe corso");
 		return false;
 	}
 	

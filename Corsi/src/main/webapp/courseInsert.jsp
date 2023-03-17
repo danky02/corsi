@@ -97,7 +97,7 @@ if (session.getAttribute("username") != null) {
 						<span class="input-group-addon">
 							<i class="glyphicon glyphicon-euro"></i>
 						</span>
-						<input type="number" placeholder="Costo..." name="cost" class="form-control">
+						<input type="number" min="0" placeholder="Costo..." name="cost" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-6 error" id="infoCost"></div>
@@ -114,6 +114,19 @@ if (session.getAttribute("username") != null) {
 					</div>
 				</div>
 				<div class="col-md-6 error" id="infoClassroom"></div>
+			</div>
+			<!-- Professor -->
+			<div class="form-group">
+				<label class="col-md-2 control-label">Professore</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-user"></i>
+						</span>
+						<input type="number" min="0" placeholder="Codice Professore..." name="profcode" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 error" id="infoProfCode"></div>
 			</div>
 						
 			<!-- Submit button -->

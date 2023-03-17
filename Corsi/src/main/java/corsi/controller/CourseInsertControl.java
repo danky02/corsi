@@ -37,6 +37,7 @@ public class CourseInsertControl extends HttpServlet {
 		String end = request.getParameter("enddate");
 		Double cost = Double.parseDouble(request.getParameter("cost"));
 		String classroom = request.getParameter("classroom");
+		Integer profcode = Integer.parseInt(request.getParameter("profcode"));
 		List<String> comments = new ArrayList<>();
 		comments.add(request.getParameter("comment"));
 		List<String> rooms = new ArrayList<>();
@@ -58,14 +59,16 @@ public class CourseInsertControl extends HttpServlet {
 		course.setEndDate(endDate);
 		course.setCourseCost(cost);
 		course.setCourseRoom(classroom);
+		course.setCourseComment("");
+		course.setProfessorCode(profcode);
 		
 		try {
 			if (Validator.getInstance().isValidCourse(course)) {
 				AdminFacade.getInstance().createCourse(course);
 				response.sendRedirect("courseInsert.jsp");
-}else {
-	System.out.println("Validazione non è andata a buon fine");
-}
+		} else {
+			System.out.println("Validazione non è andata a buon fine");
+		}
 		} catch (ParseException | ClassNotFoundException | DAOException e) {
 			e.printStackTrace();
 		}
