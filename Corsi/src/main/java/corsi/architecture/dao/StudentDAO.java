@@ -92,8 +92,8 @@ public class StudentDAO implements DAOConstants {
 		ResultSet rs = stmt.executeQuery(SELECT_TOT_STUDENT_COUNT);
 		if (rs.next())
 			count = rs.getInt(1);
-		stmt.close();
 		rs.close();
+		stmt.close();
 		return count;
 	}
 }

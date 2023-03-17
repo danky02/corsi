@@ -21,17 +21,14 @@ public class StudentBC {
 
 	// create (student: Student) void
 		public void create(Student student) throws SQLException, ClassNotFoundException, IOException {
-			if (getTotCount() >= 12) {
-				return;
-			}
 			try {
 				long id = StudentIdGenerator.getInstance().getNextId();
 				student.setCode(id);
-				System.out.println("Connection: " + conn.getClientInfo());
+//				System.out.println("Connection: " + conn.getClientInfo());
 				StudentDAO.getFactory().create(conn, student);					
-			} finally {
+			}  finally {
 				DBAccess.closeConnection();
-			}
+			} 
 		}
 	
 
