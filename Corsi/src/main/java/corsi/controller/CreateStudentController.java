@@ -24,20 +24,20 @@ public class CreateStudentController extends HttpServlet {
 			String strBackground = request.getParameter("background");
 			
 			if (name == null || surname == null || strBackground == null) {
-				// non sono stati inseriti tutti i parametri richiesti
+				throw new ServletException("invalid paramenters");
 			}
 			
 			Student student = new Student();
 			
 			if (!(strBackground.equals("true") || strBackground.equals("false"))) {
-				// parametro background non inserito correttamente
+				throw new ServletException("invalid paramenter background");
 			}
 			student.setBackground(strBackground.equals("true"));
 			
 			student.setName(name);
 			student.setSurname(surname);
 			if (!Validator.getInstance().isValidStudent(student)) {
-				// student non valido
+				throw new ServletException("invalid student data");
 			}
 			
 			StudentBC studentBC = new StudentBC();
@@ -46,8 +46,7 @@ public class CreateStudentController extends HttpServlet {
 			response.sendRedirect("courseAttendance.jsp");
 		} catch (Exception redirectException) {
 			redirectException.printStackTrace();
-			// redirect to error
-			throw new ServletException(redirectException.getMessage());
+			throw new ServletException(redirectException);
 		}
 	}
 
