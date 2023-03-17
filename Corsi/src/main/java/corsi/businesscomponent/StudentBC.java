@@ -27,8 +27,9 @@ public class StudentBC {
 			try {
 				long id = StudentIdGenerator.getInstance().getNextId();
 				student.setCode(id);
+				System.out.println("Connection: " + conn.getClientInfo());
 				StudentDAO.getFactory().create(conn, student);					
-			}finally {
+			} finally {
 				DBAccess.closeConnection();
 			}
 		}
