@@ -234,4 +234,34 @@ public class CourseDAO implements DAOConstants {
 		}
 		return free;
 	}
+	
+	public List<Course> getListByStudent(Connection conn, long studentCode) throws DAOException {
+		List<Course> result = new ArrayList<Course>();
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(SELECT_COURSES_BY_STUDENT);
+			ps.setLong(1, studentCode);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Course course = new Course();
+				course.setCourseCode(rs.getLong(1));
+				course.setCourseName(rs.getString(2));
+				course.setStartDate(rs.getDate(3));
+				course.setEndDate(rs.getDate(4));
+				course.setCourseCost(rs.getDouble(5));
+				course.setCourseComment(rs.getString(6));
+				course.setCourseRoom(rs.getString(7));
+				course.setProfessorCode(rs.getLong(8));
+				result.add(course);
+			}
+			rs.close();
+			
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+		
+		return result;
+	}
 }

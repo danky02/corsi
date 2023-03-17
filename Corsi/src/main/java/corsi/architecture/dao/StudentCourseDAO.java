@@ -75,6 +75,7 @@ public class StudentCourseDAO implements DAOConstants {
 		return count;
 	}
 	
+	// TODO to remove
 	public List<StudentCourse> getByStudent(Connection conn, long studentCode) throws DAOException {
 		List<StudentCourse> result = new ArrayList<StudentCourse>();
 		

@@ -17,12 +17,10 @@ import corsi.businesscomponent.model.StudentCourse;
 public class CourseBC {
 	private Connection conn;
 	private CourseDAO cDAO;
-	private StudentCourseDAO scDAO;
 
 	public CourseBC() throws ClassNotFoundException, DAOException, IOException {
 		conn = DBAccess.getConnection();
 		cDAO = CourseDAO.getFactory();
-		scDAO = StudentCourseDAO.getFactory();
 	}
 	
 	public void create(Course course) throws ClassNotFoundException, DAOException, IOException {
@@ -120,15 +118,10 @@ public class CourseBC {
 	}
 	
 	public List<Course> getCoursesByStudent(Student student) throws DAOException { 
-		List<Course> courses = new ArrayList<Course>();
+		List<Course> courses = null;
 		
 		try {
-			List<StudentCourse> studentCourses = scDAO.getByStudent(conn, student.getCode());
-			
-			for (StudentCourse studentCourse : studentCourses) {
-				Course course = cDAO.getByCode(conn, studentCourse.getCourseCode());
-				courses.add(course);
-			}			
+			courses = cDAO.getListByStudent(conn, student.getCode());		
 		} finally {
 			DBAccess.closeConnection();
 		}
