@@ -19,7 +19,6 @@ public class ControlloLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("admincode");
-//		String password = Algoritmo.convertiMD5(request.getParameter("password"));
 		
 		HttpSession session = request.getSession();
 		String adminpass = null;
@@ -29,17 +28,80 @@ public class ControlloLogin extends HttpServlet {
 				Login l = new Login();
 				adminpass = l.getAdminPass(username);
 				if(adminpass != null) {
-					if(adminpass.equals(password)) {
+					Cookie[] cookies = request.getCookies();
+					Integer attempt = 0;
+					for(Cookie c : cookies){
+						if(c.getName().equals("attempts")){
+							attempt = Integer.parseInt(c.getValue());
+						}
+					}
+					if(adminpass.equals(password) && attempt < 5) {
 						session.setAttribute("username", username);
 						Cookie userCookie = new Cookie("username", username);
 						userCookie.setMaxAge(10 * 365 * 24 * 60 * 60);
 						response.addCookie(userCookie);
 						response.sendRedirect("courseAttendance.jsp");
 					} else {
-						response.sendRedirect("nopermission.jsp");
+						for(Cookie c : cookies){
+							if(c.getName().equals("attempts")){
+								System.out.println("Cookie trovato");
+								System.err.println("Valore attempts: " + c.getValue());
+								attempt = Integer.parseInt(c.getValue());
+								if(attempt == 4) {
+									System.out.println("Attempts == 4");
+									c.setMaxAge(30);
+									response.addCookie(c);
+									response.sendRedirect("toomanyattempts.jsp");
+									return;
+								} else {
+									System.out.println("Attempts != 4");
+									attempt++;
+									c.setValue(attempt.toString());
+									c.setMaxAge(30);
+									response.addCookie(c);
+									response.sendRedirect("login.jsp");
+									return;
+								}
+							}
+						}
+						System.out.println("Creato cookie attempts");
+						Cookie loginAttempts = new Cookie("attempts", "1");
+						loginAttempts.setMaxAge(10 * 365 * 24 * 60 * 60);
+						response.addCookie(loginAttempts);
+						System.out.println("1");
+						response.sendRedirect("wronglogin.jsp");
 					}
 				} else {
-					response.sendRedirect("nopermission.jsp");
+					System.out.println("adminpass == null");
+					Cookie[] cookies = request.getCookies();
+					for(Cookie c : cookies){
+						if(c.getName().equals("attempts")){
+							System.out.println("Cookie trovato");
+							System.err.println("Valore attempts: " + c.getValue());
+							Integer attempt = Integer.parseInt(c.getValue());
+							if(attempt == 4) {
+								System.out.println("Attempts == 4");
+								c.setMaxAge(30);
+								response.addCookie(c);
+								response.sendRedirect("toomanyattempts.jsp");
+								return;
+							} else {
+								System.out.println("Attempts != 4");
+								attempt++;
+								c.setValue(attempt.toString());
+								c.setMaxAge(30);
+								response.addCookie(c);
+								response.sendRedirect("login.jsp");
+								return;
+							}
+						}
+					}
+					System.out.println("Creato cookie attempts");
+					Cookie loginAttempts = new Cookie("attempts", "1");
+					loginAttempts.setMaxAge(10 * 365 * 24 * 60 * 60);
+					response.addCookie(loginAttempts);
+					System.out.println("1");
+					response.sendRedirect("wronglogin.jsp");
 				}
 			} catch(Exception e) {
 				e.printStackTrace();
