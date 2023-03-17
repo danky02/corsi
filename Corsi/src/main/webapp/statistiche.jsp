@@ -14,6 +14,13 @@ if (session.getAttribute("username") != null) {
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+  /* Detach tables from flex container */
+  .table-responsive table {
+    display: block;
+    margin: 4em;
+  }
+</style>
 <%@ include file="CDN.html"%>
 <meta charset="UTF-8">
 <title>Statistiche</title>
@@ -67,7 +74,7 @@ if (session.getAttribute("username") != null) {
 
 		<div style="display: flex; justify-content: center; width: 100%;">
 			<!-- Qua lista di tutti i corsisti -->
-			<div class="table-responsive" style="display: flex;">
+			<div class="table-responsive">
 				<%
 				ArrayList<Student> corsisti = new ArrayList<Student>(af.getAllStudents());
 				if (!corsisti.isEmpty()) {
