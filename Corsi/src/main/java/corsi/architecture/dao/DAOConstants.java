@@ -15,6 +15,7 @@ public interface DAOConstants {
 	final String SELECT_DATE_DIFF = "Select end_date - start_data from course";
 	final String SELECT_MULTI_PROF = "SELECT p.professor_name, p.professor_surname FROM professor p INNER JOIN course c1 ON c1.professor_code = p.professor_code INNER JOIN course c2 ON c2.professor_code = p.professor_code AND c2.course_code != c1.course_code GROUP BY p.professor_code, p.professor_name, p.professor_surname";
 	final String SELECT_AVAILABLE_COURSES = "SELECT c.course_name, COUNT(sc.student_code) AS num_students FROM course c LEFT JOIN student_course sc ON c.course_code = sc.course_code WHERE (SELECT COUNT(*) FROM student_course sc2 WHERE sc2.course_code = c.course_code) < 12 GROUP BY c.course_name, c.course_code";
+	final String SELECT_COURSES_BY_STUDENT = "SELECT * FROM course c where exists(select * FROM student_course s_c where s_c.course_code = c.course_code and s_c.student_code = ?)";
 	
 	final String UPDATE_COURSE = "Update course set course_name = ?, start_date = ?, end_date = ?, course_cost = ?, course_comments = ?, course_room = ?, professor_code = ? where course_code = ?";
 	final String UPDATE_STUDENT = "Update student set student_name = ?, student_surname = ?, educational_background = ? where student_code = ?";
