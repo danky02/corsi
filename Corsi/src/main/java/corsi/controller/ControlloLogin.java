@@ -35,7 +35,7 @@ public class ControlloLogin extends HttpServlet {
 							attempt = Integer.parseInt(c.getValue());
 						}
 					}
-					if(adminpass.equals(password) && attempt < 5) {
+					if(adminpass.equals(password) && attempt < 4) {
 						session.setAttribute("username", username);
 						Cookie userCookie = new Cookie("username", username);
 						userCookie.setMaxAge(10 * 365 * 24 * 60 * 60);
@@ -59,7 +59,7 @@ public class ControlloLogin extends HttpServlet {
 									c.setValue(attempt.toString());
 									c.setMaxAge(30);
 									response.addCookie(c);
-									response.sendRedirect("login.jsp");
+									response.sendRedirect("wronglogin.jsp");
 									return;
 								}
 							}
@@ -91,7 +91,7 @@ public class ControlloLogin extends HttpServlet {
 								c.setValue(attempt.toString());
 								c.setMaxAge(30);
 								response.addCookie(c);
-								response.sendRedirect("login.jsp");
+								response.sendRedirect("wronglogin.jsp");
 								return;
 							}
 						}
