@@ -29,16 +29,22 @@ public class ControlloLogin extends HttpServlet {
 				adminpass = l.getAdminPass(username);
 				if(adminpass != null) {
 					Cookie[] cookies = request.getCookies();
+					Cookie attemptCookie = null;
 					Integer attempt = 0;
 					for(Cookie c : cookies){
 						if(c.getName().equals("attempts")){
 							attempt = Integer.parseInt(c.getValue());
+							attemptCookie = c;
 						}
 					}
 					if(adminpass.equals(password) && attempt < 4) {
 						session.setAttribute("username", username);
 						Cookie userCookie = new Cookie("username", username);
 						userCookie.setMaxAge(10 * 365 * 24 * 60 * 60);
+						if(attemptCookie != null) {
+							attemptCookie.setMaxAge(0);
+							response.addCookie(attemptCookie);
+						}
 						response.addCookie(userCookie);
 						response.sendRedirect("courseAttendance.jsp");
 					} else {

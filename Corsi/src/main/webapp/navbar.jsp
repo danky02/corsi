@@ -33,7 +33,7 @@
 								<a href="studentInsert.jsp">Inserisci Corsista</a>
 							</li>
 							<li>
-								<a href="#" data-toggle="modal" data-target="#editModal_0">Gestione Corsi</a>
+								<a href="courseInsert.jsp">Gestione Corsi</a>
 							</li>
 						</ul>
 					</li>

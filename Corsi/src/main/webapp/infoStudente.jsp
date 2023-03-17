@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="corsi.businesscomponent.model.Course"%>
 <%@page import="java.util.List"%>
 <%@page import="corsi.businesscomponent.StudentBC"%>
@@ -30,7 +31,7 @@
 				StudentBC sBC = new StudentBC();
 				Student s = sBC.getByCode(id);
 			%>
-			<%=s.getName()%>
+			<%=s.getName()%> <%=s.getSurname()%>
 		</h4>
 		
 		<div class="table-responsive">
@@ -46,19 +47,20 @@
 			<tbody>
 				<%
 					List<Course> c = AdminFacade.getInstance().getCoursesByStudent(s);
+					SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 					for (int i = 0; i < c.size(); i++) {
 				%>
 				<tr>
 					<td style="vertical-align: middle;"><%=c.get(i).getCourseName()%></td>
-					<td style="vertical-align: middle;"><%=c.get(i).getStartDate()%></td>
-					<td style="vertical-align: middle;"><%=c.get(i).getEndDate()%></td>
+					<td style="vertical-align: middle;"><%=formatter.format(c.get(i).getStartDate())%></td>
+					<td style="vertical-align: middle;"><%=formatter.format(c.get(i).getEndDate())%></td>
 					<td style="vertical-align: middle;"><%=c.get(i).getCourseRoom()%></td>
 				</tr>
+				<%
+					}
+				%>
 			</tbody>
 			</table>
-			<%
-				}
-			%>
 		</div>
 	</div>
 </body>
