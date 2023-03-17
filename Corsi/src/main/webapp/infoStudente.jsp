@@ -26,9 +26,9 @@
 		
 		<h4>Studente: 
 			<%
-			long id = Long.parseLong(request.getParameter("id"));
-			StudentBC sBC = new StudentBC();
-			Student s = sBC.getByCode(id);
+				long id = Long.parseLong(request.getParameter("code"));
+				StudentBC sBC = new StudentBC();
+				Student s = sBC.getByCode(id);
 			%>
 			<%=s.getName()%>
 		</h4>
