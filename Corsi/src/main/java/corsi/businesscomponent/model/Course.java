@@ -14,7 +14,8 @@ public class Course implements Serializable {
 	private String courseComment;
 	private String courseRoom;
 	private long professorCode;
-
+	private int freeSeats;
+	
 	public long getProfessorCode() {
 		return professorCode;
 	}
@@ -77,6 +78,14 @@ public class Course implements Serializable {
 
 	public void setCourseRoom(String courseRoom) {
 		this.courseRoom = courseRoom;
+	}
+
+	public int getFreeSeats() {
+		return freeSeats;
+	}
+
+	public void setFreeSeats(int freeSeats) {
+		this.freeSeats = freeSeats;
 	}
 
 	@Override

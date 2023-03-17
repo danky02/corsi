@@ -225,6 +225,7 @@ public class CourseDAO implements DAOConstants {
 			while (rs.next()) {
 				Course course = new Course();
 				course.setCourseName(rs.getString(1));
+				course.setFreeSeats(rs.getInt(2));
 				free.add(course);
 			}
 			rs.close();
