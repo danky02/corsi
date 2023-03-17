@@ -39,7 +39,7 @@ public class CourseCommentBC {
 	public int getTotCount() throws SQLException {
 		int result = -1;
 		try {
-			result = CourseCommentDAO.getFactory().getCount(conn);
+			result = ccDAO.getCount(conn);
 		} finally {
 			DBAccess.closeConnection();
 		}
