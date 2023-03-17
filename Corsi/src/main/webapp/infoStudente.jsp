@@ -45,7 +45,7 @@
 			</thead>
 			<tbody>
 				<%
-					List<Course> c = AdminFacade.getInstance().getCoursesByStudent();
+					List<Course> c = AdminFacade.getInstance().getCoursesByStudent(s);
 					for (int i = 0; i < c.size(); i++) {
 				%>
 				<tr>

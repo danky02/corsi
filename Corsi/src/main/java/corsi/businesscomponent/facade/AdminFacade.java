@@ -252,4 +252,13 @@ public class AdminFacade {
 		result = courseBC.getFree();
 		return result;
 	}
+	
+	public List<Course> getCoursesByStudent(Student student) throws ClassNotFoundException, IOException, SQLException {
+		List<Course> result = null;
+		
+		courseBC = new CourseBC();
+		result = courseBC.getCoursesByStudent(student);
+		return result;
+	}
+	
 }
