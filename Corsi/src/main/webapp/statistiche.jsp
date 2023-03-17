@@ -14,12 +14,13 @@ if (session.getAttribute("username") != null) {
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-  /* Detach tables from flex container */
-  .table-responsive table {
-    display: block;
-    margin: 4em;
-  }
+.table-responsive table {
+	display: block;
+	margin-right: 4em;
+	margin-left: 4em;
+}
 </style>
 <%@ include file="CDN.html"%>
 <meta charset="UTF-8">
@@ -30,49 +31,129 @@ if (session.getAttribute("username") != null) {
 	<jsp:include page="navbar.jsp" />
 
 	<div class="container">
-		<header class="page-header">
-			<h3>Statistiche</h3>
-		</header>
+
 		<%
 		AdminFacade af = AdminFacade.getInstance();
 		%>
-		<p>
-			Numero di corsisti totali: <strong> <%=af.getTotStudentCount()%>
-			</strong>
-		</p>
-		<br>
-		<%
-		String tmpCourse = null;
-		tmpCourse = af.getPopularCourse();
-		if (tmpCourse != null) {
-		%>
-		<p>
-			Corso con maggiore frequenza: <strong> <%=af.getPopularCourse()%>
-			</strong>
-		</p>
-		<br>
-		<p>
-			Data del corso con massima data d'inizio : <strong> <%
- SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
- %> <%=formatter.format(af.getLatestCourseDate())%>
-			</strong>
-		</p>
-		<br>
-		<p>
-			Durata media dei corsi: <strong> <%=af.getAverageDuration()%>
-			</strong>
-		</p>
-		<br>
-		<p>
-			Numero di commenti totali: <strong> <%=af.getCommCount()%>
-			</strong>
-		</p>
-		<br>
-		<%
-		}
-		%>
 
-		<div style="display: flex; justify-content: center; width: 100%;">
+		<div style="display: flex;">
+			<div style="width: 50%;">
+			<header class="page-header">
+				<h3>Statistiche</h3>
+			</header>
+				<p>
+					Numero di corsisti totali: <strong> <%=af.getTotStudentCount()%>
+					</strong>
+				</p>
+				<%
+				String tmpCourse = null;
+				tmpCourse = af.getPopularCourse();
+				if (tmpCourse != null) {
+				%>
+				<p>
+					Corso con maggiore frequenza: <strong> <%=af.getPopularCourse()%>
+					</strong>
+				</p>
+				<p>
+					Data del corso con massima data d'inizio : <strong> <%
+					 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+					 %> <%=formatter.format(af.getLatestCourseDate())%>
+					</strong>
+				</p>
+				<p>
+					Durata media dei corsi: <strong> <%=af.getAverageDuration()%>
+					</strong>
+				</p>
+				<p>
+					Numero di commenti totali: <strong> <%=af.getCommCount()%>
+					</strong>
+				</p>
+				<br>
+				<%
+				}
+				%>
+			</div>
+
+			<%
+			ArrayList<Course> corsi2 = new ArrayList<Course>(af.getFreeCourses());
+			if (!corsi2.isEmpty()) {
+			%>
+			<div
+				style="width: 30%; margin-top:2em;">
+				<h4 style="text-align: center;">Posti occupati nei corsi</h4>
+				<canvas id="freeseats-chart"></canvas>
+			</div>
+			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+			<script>
+			var freeseatsData = {
+				labels: [<%Iterator<Course> iterator3 = corsi2.iterator();
+					while (iterator3.hasNext()) {
+						Course corso = iterator3.next();%> "<%=corso.getCourseName()%>", <%}%>],
+							
+				datasets: [{
+					data: [<%Iterator<Course> iterator4 = corsi2.iterator();
+						while (iterator4.hasNext()) {
+							Course corso = iterator4.next();%><%=corso.getFreeSeats()%>,<%}%>],
+							
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.6)',
+						'rgba(54, 162, 235, 0.6)',
+						'rgba(255, 206, 86, 0.6)',
+						'rgba(75, 192, 192, 0.6)',
+						'rgba(153, 102, 255, 0.6)',
+						'rgba(255, 159, 64, 0.6)'
+					],
+				
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+					],
+				
+					borderWidth: 1
+				}]
+		
+			};
+		
+			var freeseatsOptions = {
+				title: {
+					display: true,
+					text: 'Posti liberi per corso'
+				},
+				
+				cutoutPercentage: 50,
+				
+				legend: {
+					position: 'bottom',
+					labels: {
+						fontColor: 'black',
+						boxWidth: 10,
+						padding: 15
+					}
+				}
+			};
+		
+			var freeseatsChart = new Chart(document.getElementById('freeseats-chart'), {
+				type: 'doughnut',
+				data: freeseatsData,
+				options: freeseatsOptions
+			});
+		
+	</script>
+			<%
+			}
+			%>
+			<hr>
+		</div>
+
+
+
+
+
+		<div style="display: flex; justify-content: left; width: 100%; margin-top: 3em;">
 			<!-- Qua lista di tutti i corsisti -->
 			<div class="table-responsive">
 				<%
@@ -176,7 +257,8 @@ if (session.getAttribute("username") != null) {
 			%>
 		</div>
 	</div>
-	<hr>
+
+
 </body>
 </html>
 <%
