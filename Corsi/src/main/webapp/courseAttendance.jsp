@@ -31,16 +31,18 @@ if (session.getAttribute("username") != null) {
 				<tr>
 					<th>Nome</th>
 					<th>Cognome</th>
+					<th style="width: 50px"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
-					List<Student> s = AdminFacade.getInstance().getAllStudents();
-					for (int i = 0; i < s.size(); i++) {
+					List<Student> students = AdminFacade.getInstance().getAllStudents();
+					for (Student s : students) {
 				%>
 				<tr>
-					<td style="vertical-align: middle;"><%=s.get(i).getName()%></td>
-					<td style="vertical-align: middle;"><%=s.get(i).getSurname()%></td>
+					<td style="vertical-align: middle;"><%=s.getName()%></td>
+					<td style="vertical-align: middle;"><%=s.getSurname()%></td>
+					<td style="vertical-align: middle;"><a href="infoStudente.jsp?code=<%=s.getCode()%>">info</a></td>
 				</tr>
 				<%
 					}
