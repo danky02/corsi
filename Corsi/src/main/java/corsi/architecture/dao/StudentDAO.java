@@ -56,23 +56,18 @@ public class StudentDAO implements DAOConstants {
 	
 	public Student getByCode(Connection conn, long code) throws SQLException {
 		Student result = null;
-		
 		PreparedStatement stmt = conn.prepareStatement(SELECT_STUDENT_BY_CODE);
 		stmt.setLong(1, code);
 		ResultSet rs = stmt.executeQuery();
-		
 		if(rs.next()) {
 			result = new Student();
 			result.setName(rs.getString("student_name"));
 			result.setSurname(rs.getString("student_surname"));
 			result.setCode(rs.getLong("student_code"));
 			result.setBackground(rs.getInt("educational_background") == 1);
-            
 		}
-		
 		rs.close();
 		stmt.close();
-		
 		return result;
 	}
 	
@@ -97,9 +92,8 @@ public class StudentDAO implements DAOConstants {
 		ResultSet rs = stmt.executeQuery(SELECT_TOT_STUDENT_COUNT);
 		if (rs.next())
 			count = rs.getInt(1);
-		
-		stmt.close();
 		rs.close();
+		stmt.close();
 		return count;
 	}
 }
