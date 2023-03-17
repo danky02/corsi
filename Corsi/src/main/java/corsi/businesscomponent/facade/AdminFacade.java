@@ -261,10 +261,14 @@ public class AdminFacade {
 		return result;
 	}
 	public List<Course> getAllCourses() throws ClassNotFoundException, IOException, DAOException {
-		List<Course> CoursesList = new ArrayList<Course>();
+		List<Course> CoursesList = null;
 		courseBC = new CourseBC();
 		CoursesList = courseBC.getAll();
 		return CoursesList;
 	}
 	
+	public List<Course> getFreeCoursesByStudent(Student student) throws ClassNotFoundException, DAOException, IOException {
+		courseBC = new CourseBC();
+		return courseBC.getFreeCoursesByStudent(student);
+	}
 }

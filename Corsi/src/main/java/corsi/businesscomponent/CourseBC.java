@@ -128,4 +128,33 @@ public class CourseBC {
 		
 		return courses;
 	}
+	
+	public List<Course> getFreeCoursesByStudent(Student student) throws DAOException {
+		List<Course> studentCourses = null;
+		List<Course> freeCourses = null;
+		List<Course> courses = new ArrayList<Course>();
+		
+		try {
+			studentCourses = cDAO.getListByStudent(conn, student.getCode());
+			freeCourses = cDAO.getAll(conn);
+			
+			for (Course course : freeCourses) {
+			    boolean alreadyEnrolled = false;
+			    for (Course enrolledCourse : studentCourses) {
+			        if (enrolledCourse.getCourseCode() == course.getCourseCode()) {
+			            alreadyEnrolled = true;
+			            break;
+			        }
+			    }
+			    if (!alreadyEnrolled) {
+			        courses.add(course);
+			    }
+			}
+
+		} finally {
+			DBAccess.closeConnection();
+		}
+		
+		return courses;
+	}
 }

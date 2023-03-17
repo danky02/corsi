@@ -29,6 +29,7 @@ public class StudentCourseDAO implements DAOConstants {
 	}
 
 	public void create(Connection conn, StudentCourse entity) throws DAOException {
+		System.out.printf("course:%d student:%d\n", entity.getCourseCode(), entity.getStudentCode());
 		try {
 			rowSet.setCommand("SELECT * FROM student_course");
 			rowSet.execute(conn);

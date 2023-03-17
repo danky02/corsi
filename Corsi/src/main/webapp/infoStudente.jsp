@@ -42,25 +42,55 @@
 					<th>Data Inizio</th>
 					<th>Data Fine</th>
 					<th>Aula</th>
+					<th style="width: 50px"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
-					List<Course> c = AdminFacade.getInstance().getCoursesByStudent(s);
+					List<Course> courses = AdminFacade.getInstance().getCoursesByStudent(s);
 					SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-					for (int i = 0; i < c.size(); i++) {
+					for (Course c : courses) {
+						String code = c.getCourseCode() + "";
 				%>
 				<tr>
-					<td style="vertical-align: middle;"><%=c.get(i).getCourseName()%></td>
-					<td style="vertical-align: middle;"><%=formatter.format(c.get(i).getStartDate())%></td>
-					<td style="vertical-align: middle;"><%=formatter.format(c.get(i).getEndDate())%></td>
-					<td style="vertical-align: middle;"><%=c.get(i).getCourseRoom()%></td>
+					<td style="vertical-align: middle;"><%=c.getCourseName()%></td>
+					<td style="vertical-align: middle;"><%=formatter.format(c.getStartDate())%></td>
+					<td style="vertical-align: middle;"><%=formatter.format(c.getEndDate())%></td>
+					<td style="vertical-align: middle;"><%=c.getCourseRoom()%></td>
+					<td>
+						<form action="courseSubscription" method="POST">
+							<input type="hidden" name="_method" value="UNSUBSCRIBE" />
+							
+							<input type="hidden" name="student" value="<%= s.getCode() %>">
+							<input type="hidden" name="course" value="<%= c.getCourseCode() %>">
+							
+							<input type="submit" value="Annulla Iscrizione">
+						</form>
+					</td>
 				</tr>
 				<%
 					}
 				%>
 			</tbody>
 			</table>
+		</div>
+		<div style="margin-top: 100px">
+			<form action="courseSubscription" method="POST">
+				<input type="hidden" name="_method" value="SUBSCRIBE" />
+				
+				<input type="hidden" name="student" value="<%= s.getCode() %>">
+				<select name="course">
+				<% 
+				List<Course> availableCourses = AdminFacade.getInstance().getFreeCoursesByStudent(s);
+				for(Course availableCourse : availableCourses) {
+				%>
+					<option value="<%=availableCourse.getCourseCode() %>"><%=availableCourse.getCourseName() %></option>
+				<%
+				} %>
+				</select>
+				
+				<input type="submit" value="Iscrizione">
+			</form>
 		</div>
 	</div>
 </body>
