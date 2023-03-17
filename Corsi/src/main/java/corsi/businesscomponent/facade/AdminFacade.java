@@ -225,8 +225,8 @@ public class AdminFacade {
 		return avgDuration;
 	}
 	
-	public int getCommCount() throws ClassNotFoundException, IOException, SQLException {
-		int count = 0;
+	public long getCommCount() throws ClassNotFoundException, IOException, SQLException {
+		long count = 0;
 		ccBC = new CourseCommentBC();
 		count = ccBC.getTotCount();
 		return count;

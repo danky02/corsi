@@ -65,7 +65,7 @@ if (session.getAttribute("username") != null) {
 		<p>
 			Numero di commenti totali:
 			<strong>
-			<%= af.getCommCount()()%>
+			<%= af.getCommCount()%>
 			</strong>
 		</p>
 		<br>

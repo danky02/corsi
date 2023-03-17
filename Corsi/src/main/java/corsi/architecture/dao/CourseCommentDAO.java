@@ -48,13 +48,13 @@ public class CourseCommentDAO implements DAOConstants {
 		return comment;
 	}
 
-	public int getCount(Connection conn) throws SQLException {
-		int count = -1;
+	public long getCount(Connection conn) throws SQLException {
+		long count = -1;
 		Statement stmt= conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet rs = stmt.executeQuery(SELECT_COMMENT_COUNT);
-		if (rs.next())
-			count = rs.getInt(1);
-		stmt.close();
+		if (rs.next()) {
+			count = rs.getLong(1);
+		}
 		rs.close();
 		return count;
 	}
