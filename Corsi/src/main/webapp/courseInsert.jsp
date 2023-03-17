@@ -11,6 +11,7 @@ if (session.getAttribute("username") != null) {
 <html>
 <head>
 	<title>Inserimento corso</title>
+	
 
 <%@include file="CDN.html"%>
 <meta charset="UTF-8">
@@ -18,11 +19,10 @@ if (session.getAttribute("username") != null) {
 <script src="js/validazione.js"></script>
 </head>
 <body>
-
 	<jsp:include page="navbar.jsp"/>
 	<div class="container">
 	<h1>Inserimento corso</h1>
-	<form action="processa_dati.jsp" method="post">
+	<form action="/<%=application.getServletContextName()%>/courseInsert" method="post">
 		<label for="nome_corso">Nome del corso:</label>
 		<input type="text" name="nome_corso" id="nome_corso"><br><br>
 		<label for="inizio_corso">Inizio del corso:</label>
@@ -31,20 +31,14 @@ if (session.getAttribute("username") != null) {
 		<input type="date" name="fine_corso" id="fine_corso"><br><br>
 		<label for="costo_corso">Costo del corso:</label>
 		<input type="number" name="costo_corso" id="costo_corso"><br><br>
-		<label for="commenti_corso">Commenti:</label><br>
-		<textarea name="commenti_corso" id="commenti_corso" rows="5" cols="50"></textarea><br><br>
-		<label for="stanze_corso">Stanze:</label><br>
-		<input type="checkbox" name="stanze_corso" id="stanza_1" value="Stanza 1"><label for="<%
-					List<Course> c = AdminFacade.getInstance().getAllCourses();
-					for (int i = 0; i < c.size(); i++) {
-					%>">Stanza 1</label><br>/>
+		<label for="stanza_corso">Stanza:</label><br>
+		<input type="text" name="numero_stanza" id="numero_stanza"><br><br>
 		<input type="submit" value="Inserisci corso">
 	</form>
 	</div>
 </body>
 </html>
-<%
-					}
+<%					
 }else{
 response.sendRedirect("login.jsp");
 }%>
