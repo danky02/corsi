@@ -126,7 +126,7 @@ if (session.getAttribute("username") != null) {
 					text: 'Posti liberi per corso'
 				},
 				
-				cutoutPercentage: 50,
+				cutoutPercentage: 30,
 				
 				legend: {
 					position: 'bottom',
