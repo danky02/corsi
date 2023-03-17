@@ -13,8 +13,8 @@ $(document).ready(function() {
 						message: 'Il campo nome non può essere vuoto' 
 					},
 					regexp: { 
-						regexp: /^[a-zA-Z]{2,30}$/, 
-						message: 'Da 2 a 30 caratteri (Solo lettere)' 
+						regexp: /^[a-zA-Z0-9 ]{2,30}$/, 
+						message: 'Da 2 a 30 caratteri (Solo lettere e numeri)' 
 					}
 				}
 			},

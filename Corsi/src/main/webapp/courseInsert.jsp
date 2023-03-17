@@ -23,7 +23,7 @@ if (session.getAttribute("username") != null) {
 			format: 'dd/mm/yyyy', 
 			autoclose: 'true', 
 			startDate: '01/01/1900', 
-			endDate: new Date()
+			endDate: '01/01/2026'
 		}).on('changeDate', function(e){
 			$('#form').bootstrapValidator('revalidateField', 'startdate');
 		});
@@ -35,7 +35,7 @@ if (session.getAttribute("username") != null) {
 			format: 'dd/mm/yyyy', 
 			autoclose: 'true', 
 			startDate: '01/01/1900', 
-			endDate: new Date()
+			endDate: '01/01/2026'
 		}).on('changeDate', function(e){
 			$('#form').bootstrapValidator('revalidateField', 'enddate');
 		});

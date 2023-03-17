@@ -20,10 +20,8 @@ if (session.getAttribute("username") != null) {
 	<jsp:include page="navbar.jsp" />
 	<div class="container">
 		<header class="page-header">
-			<h2>Studenti Registrati</h2>
+			<h3>Studenti Registrati</h3>
 		</header>
-		
-		<h3>Student: </h3>
 		
 		<div class="table-responsive">
 			<table class="table table-hover">

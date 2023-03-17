@@ -89,7 +89,7 @@
 				} %>
 				</select>
 				
-				<input type="submit" value="Iscrizione">
+				<input type="submit" value="Iscrivi studente">
 			</form>
 		</div>
 	</div>
