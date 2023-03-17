@@ -80,7 +80,7 @@ if (session.getAttribute("username") != null) {
 			%>
 			<div
 				style="width: 30%; margin-top:2em;">
-				<h4 style="text-align: center;">Posti occupati nei corsi</h4>
+				<h4 style="text-align: center;">Iscrizioni</h4>
 				<canvas id="freeseats-chart"></canvas>
 			</div>
 			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
