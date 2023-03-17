@@ -36,8 +36,8 @@ public class CourseCommentBC {
 		return course;
 	}
 
-	public long getTotCount() throws SQLException {
-		long result = -1;
+	public int getTotCount() throws SQLException {
+		int result = -1;
 		try {
 			result = ccDAO.getCount(conn);
 		} finally {

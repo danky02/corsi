@@ -25,117 +25,128 @@ if (session.getAttribute("username") != null) {
 		<header class="page-header">
 			<h3>Statistiche</h3>
 		</header>
-		<% AdminFacade af = AdminFacade.getInstance(); %>
-		<p>
-			Numero di corsisti totali:
-			<strong>
-			<%= af.getTotStudentCount() %>
-			</strong>
-		</p>
-		<br>
-		<% 
-			String tmpCourse = null;
-			tmpCourse = af.getPopularCourse();
-			if(true) {
+		<%
+		AdminFacade af = AdminFacade.getInstance();
 		%>
 		<p>
-			Corso con maggiore frequenza:
-			<strong>
-			<%= af.getPopularCourse() %>
+			Numero di corsisti totali: <strong> <%=af.getTotStudentCount()%>
+			</strong>
+		</p>
+		<br>
+		<%
+		String tmpCourse = null;
+		tmpCourse = af.getPopularCourse();
+		if (tmpCourse != null) {
+		%>
+		<p>
+			Corso con maggiore frequenza: <strong> <%=af.getPopularCourse()%>
 			</strong>
 		</p>
 		<br>
 		<p>
-			Data del corso con massima data d'inizio :
+			Data del corso con massima data d'inizio : 
 			<strong>
-			<% 
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-	        %>
-			<%= formatter.format(af.getLatestCourseDate())%>
+				<%
+					SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+				%> 
+				<%=formatter.format(af.getLatestCourseDate())%>
 			</strong>
 		</p>
 		<br>
 		<p>
-			Durata media dei corsi:
-			<strong>
-			<%= af.getAverageDuration()%>
+			Durata media dei corsi: 
+			<strong> 
+				<%=af.getAverageDuration()%>
 			</strong>
 		</p>
 		<br>
 		<p>
-			Numero di commenti totali:
-			<strong>
-			<%= af.getCommCount()%>
+			Numero di commenti totali: 
+			<strong> 
+				<%=af.getCommCount()%>
 			</strong>
 		</p>
 		<br>
-		<% 
+		<%
 		}
 		%>
-		
-		<!-- Qua lista di tutti i corsisti -->
-		<div style="display: flex;">
-			<div class="table-responsive">
-				<table class="table tabel-hover">
-				<caption>Corsisti</caption>
-					<thead>
-						<tr>
-							<th>Nome e cognome</th>
-							<th>Precedenti formativi</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-						ArrayList<Student> corsisti = new ArrayList<Student>(af.getAllStudents());
-						Iterator<Student> iterator = corsisti.iterator();
-						while(iterator.hasNext()) {
-							Student studente = iterator.next();
-						%>
-						<tr>
-							<td style="vertical-align: middle;"> <a href="infoStudente.jsp?code=<%= studente.getCode() %>"><%= studente.getName()%> <%= studente.getSurname()%></a>  </td>
 
-							<td style="vertical-align: middle;"><%= studente.getBackground() ? "Si" : "No" %></td>
-						</tr>
-						<%
-							}
-						%>
-					</tbody>
-				</table>
-			</div>
-			<div class="table-responsive">
-				<table class="table tabel-hover">
-				<caption>Professori eclettici</caption>
-					<thead>
-						<tr>
-							<th>Nome</th>
-							<th>Cognome</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-						ArrayList<Professor> professori = new ArrayList<Professor>(af.getMultiProfs());
-						Iterator<Professor> iterator2 = professori.iterator();
-						while(iterator2.hasNext()) {
-							Professor professore = iterator2.next();
-						%>
-						<tr>
-							<td style="vertical-align: middle;"> <a href="infoStudente.jsp?code=<%= professore.getCode() %>"><%= professore.getName()%></a>  </td>
-							<td style="vertical-align: middle;"> <a href="infoStudente.jsp?code=<%= professore.getCode() %>"><%= professore.getSurname()%></a></td>
-						</tr>
-						<%
-							}
-						%>
-					</tbody>
-				</table>
-			</div>
+		<!-- Qua lista di tutti i corsisti -->
+		<div class="table-responsive" style="display: flex;">
+			<%
+			ArrayList<Student> corsisti = new ArrayList<Student>(af.getAllStudents());
+			if (!corsisti.isEmpty()) {
+			%>
+			<table class="table tabel-hover">
+				<caption>Corsisti</caption>
+				<thead>
+					<tr>
+						<th>Nome e cognome</th>
+						<th>Precedenti formativi</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					Iterator<Student> iterator = corsisti.iterator();
+					while (iterator.hasNext()) {
+						Student studente = iterator.next();
+					%>
+					<tr>
+						<td style="vertical-align: middle;"><a
+							href="infoStudente.jsp?code=<%=studente.getCode()%>"><%=studente.getName()%>
+								<%=studente.getSurname()%></a></td>
+
+						<td style="vertical-align: middle;"><%=studente.getBackground() ? "Si" : "No"%></td>
+					</tr>
+					<%
+					}
+					%>
+				</tbody>
+			</table>
 		</div>
-		<hr>
+		<%
+		}
+		%>
+		<%
+		ArrayList<Professor> professori = new ArrayList<Professor>(af.getMultiProfs());
+		if (!professori.isEmpty()) {
+		%>
+		<div class="table-responsive">
+			<table class="table tabel-hover">
+				<caption>Professori eclettici</caption>
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Cognome</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					Iterator<Professor> iterator2 = professori.iterator();
+					while (iterator2.hasNext()) {
+						Professor professore = iterator2.next();
+					%>
+					<tr>
+						<td style="vertical-align: middle;"><%=professore.getName()%>
+						</td>
+						<td style="vertical-align: middle;"><%=professore.getSurname()%></td>
+					</tr>
+					<%
+					}
+					%>
+				</tbody>
+			</table>
+		</div>
+		<%
+		}
+		%>
 	</div>
+	<hr>
 </body>
 </html>
 <%
 } else {
-	response.sendRedirect("accessonegato.jsp");
+response.sendRedirect("accessonegato.jsp");
 }
 %>
