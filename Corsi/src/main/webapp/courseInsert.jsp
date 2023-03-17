@@ -35,7 +35,7 @@ if (session.getAttribute("username") != null) {
 		<textarea name="commenti_corso" id="commenti_corso" rows="5" cols="50"></textarea><br><br>
 		<label for="stanze_corso">Stanze:</label><br>
 		<input type="checkbox" name="stanze_corso" id="stanza_1" value="Stanza 1"><label for="<%
-					List<Course> c = AdminFacade.getInstance().ge;
+					List<Course> c = AdminFacade.getInstance().getAllCourses();
 					for (int i = 0; i < c.size(); i++) {
 					%>">Stanza 1</label><br>/>
 		<input type="submit" value="Inserisci corso">
