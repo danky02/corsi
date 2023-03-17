@@ -159,6 +159,7 @@ public class CourseDAO implements DAOConstants {
 			if (rs.next()) {
 				result = rs.getString(1);
 			}
+
 			rs.close();
 		} catch (SQLException sql) {
 			throw new DAOException(sql);

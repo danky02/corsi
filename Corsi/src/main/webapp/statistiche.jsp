@@ -1,3 +1,4 @@
+<%@page import="corsi.businesscomponent.model.Professor"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -73,32 +74,61 @@ if (session.getAttribute("username") != null) {
 		%>
 		
 		<!-- Qua lista di tutti i corsisti -->
-		<div class="table-responsive">
-			<table class="table tabel-hover">
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Cognome</th>
-						<th>Precedenti formativi</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-					ArrayList<Student> corsisti = new ArrayList<Student>(af.getAllStudents());
-					Iterator<Student> iterator = corsisti.iterator();
-					while(iterator.hasNext()) {
-						Student studente = iterator.next();
-					%>
-					<tr>
-						<td style="vertical-align: middle;"> <a href="infoStudente.jsp?code=<%= studente.getCode() %>"><%= studente.getName()%></a>  </td>
-						<td style="vertical-align: middle;"> <a href="infoStudente.jsp?code=<%= studente.getCode() %>"><%= studente.getSurname()%></a></td>
-						<td style="vertical-align: middle;"><%= studente.getBackground() ? "Si" : "No" %></td>
-					</tr>
-					<%
-						}
-					%>
-				</tbody>
-			</table>
+		<div style="display: flex;">
+			<div class="table-responsive">
+				<table class="table tabel-hover">
+				<caption>Corsisti</caption>
+					<thead>
+						<tr>
+							<th>Nome e cognome</th>
+							<th>Precedenti formativi</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						ArrayList<Student> corsisti = new ArrayList<Student>(af.getAllStudents());
+						Iterator<Student> iterator = corsisti.iterator();
+						while(iterator.hasNext()) {
+							Student studente = iterator.next();
+						%>
+						<tr>
+							<td style="vertical-align: middle;"> <a href="infoStudente.jsp?code=<%= studente.getCode() %>"><%= studente.getName()%> <%= studente.getSurname()%></a>  </td>
+
+							<td style="vertical-align: middle;"><%= studente.getBackground() ? "Si" : "No" %></td>
+						</tr>
+						<%
+							}
+						%>
+					</tbody>
+				</table>
+			</div>
+			<div class="table-responsive">
+				<table class="table tabel-hover">
+				<caption>Professori eclettici</caption>
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Cognome</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						ArrayList<Professor> professori = new ArrayList<Professor>(af.getMultiProfs());
+						Iterator<Professor> iterator2 = professori.iterator();
+						while(iterator2.hasNext()) {
+							Professor professore = iterator2.next();
+						%>
+						<tr>
+							<td style="vertical-align: middle;"> <a href="infoStudente.jsp?code=<%= professore.getCode() %>"><%= professore.getName()%></a>  </td>
+							<td style="vertical-align: middle;"> <a href="infoStudente.jsp?code=<%= professore.getCode() %>"><%= professore.getSurname()%></a></td>
+						</tr>
+						<%
+							}
+						%>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<hr>
 	</div>
