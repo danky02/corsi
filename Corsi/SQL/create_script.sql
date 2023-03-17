@@ -24,14 +24,14 @@ course_comments varchar2(200),
 course_room varchar2(30),
 professor_code int,
 constraint pk_course_code primary key(course_code),
-constraint fk_professor_code foreign key(professor_code) references professor(professor_code)
+constraint fk_professor_code foreign key(professor_code) references professor(professor_code) on delete cascade
 );
 
 create table student_course(
 student_code int,
 course_code int,
-constraint fk_std_code foreign key(student_code) references student(student_code),
-constraint fk_crs_code foreign key(course_code) references course(course_code)
+constraint fk_std_code foreign key(student_code) references student(student_code) on delete cascade,
+constraint fk_crs_code foreign key(course_code) references course(course_code) on delete cascade
 );
 
 create table admin(
@@ -46,8 +46,8 @@ create table course_comment(
 student_code int,
 course_code int,
 comment_description varchar2(30),
-constraint fk_cstd_code foreign key(student_code) references student(student_code),
-constraint fk_ccrs_code foreign key(course_code) references course(course_code)
+constraint fk_cstd_code foreign key(student_code) references student(student_code) on delete cascade,
+constraint fk_ccrs_code foreign key(course_code) references course(course_code) on delete cascade
 );
 
 create sequence student_seq;

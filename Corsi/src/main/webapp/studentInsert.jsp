@@ -30,6 +30,9 @@ if (session.getAttribute("username") != null) {
 				<label class="col-md-2 control-label">Nome</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-user"></i>
+						</span>
 						<input type="text" placeholder="Nome..." name="name" class="form-control">
 					</div>
 				</div>
@@ -40,6 +43,9 @@ if (session.getAttribute("username") != null) {
 				<label class="col-md-2 control-label">Cognome</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-user"></i>
+						</span>
 						<input type="text" placeholder="Cognome..." name="surname" class="form-control">
 					</div>
 				</div>

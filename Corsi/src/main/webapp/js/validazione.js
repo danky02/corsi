@@ -6,6 +6,18 @@ $(document).ready(function() {
 			validating: 'glyphicon glyphicon-refresh'
 		},
 		fields: {
+			course_name: {
+				container: '#infoCourseName',
+				validators: {
+					notEmpty: { 
+						message: 'Il campo nome non può essere vuoto' 
+					},
+					regexp: { 
+						regexp: /^[a-zA-Z]{2,30}$/, 
+						message: 'Da 2 a 30 caratteri (Solo lettere)' 
+					}
+				}
+			},
 			name: {
 				container: '#infoStudentName',
 				validators: {
@@ -110,10 +122,22 @@ $(document).ready(function() {
 					},
 					regexp: {
 						regexp: /^[a-zA-Z0-9]{2,30}$/,
-						message: 'Max 30 caratteri (Lettere, numeri)'
+						message: ''
 					}
 				}
-			}
+			},
+			cost: {
+				container: '#infoCost',
+				validators: {
+					notEmpty: { 
+						message: 'Il campo costo non può essere vuoto' 
+					},
+					regexp: { 
+						regexp: /^[0-9]{1,30}$/, 
+						message: '' 
+					}
+				}
+			},
 		} 
 	});
 });

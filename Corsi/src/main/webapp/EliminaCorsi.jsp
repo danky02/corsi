@@ -1,10 +1,14 @@
+<%
+	if(session.getAttribute("username") == null){
+		response.sendRedirect("error403.jsp");
+	}
+%>
 <%@page import="corsi.businesscomponent.CourseBC"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
 <%@ page import="corsi.businesscomponent.model.Course" %>
 <%
-
 CourseBC cBC = new CourseBC();
 Date today = new Date();
 List<Course> courses = cBC.getAll();
@@ -20,12 +24,13 @@ List<Course> courses = cBC.getAll();
     </head>
     <body>
     <jsp:include page="navbar.jsp" />
-        <h1>Elimina Corsi</h1>
+    <div class="container">
+        <h2>Elimina Corsi</h2>
 
     <% if (!courses.isEmpty()) { %>
 		<div class="container">
 			<header class="page-header">
-        		<h2>Corsi disponibili con data maggiore alla data odierna:</h2>
+        		<h4>Corsi disponibili con data maggiore alla data odierna:</h4>
 			</header>
 		</div>
 		<div class="form-group">
@@ -33,26 +38,23 @@ List<Course> courses = cBC.getAll();
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Nome corso</th>
-                        <th>Data corso</th>
+                        <th>Nome Corso</th>
+                        <th>Data Inizio</th>
+                        <th>Cancella</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% for (Course course : courses) { %>
                         <% if (course.getStartDate().after(today)) { %>
                             <tr>
-                                <td style="vertical-align: middle;"><input type="checkbox" name="coursecode" value="<%= course.getCourseCode() %>"></td>
                                 <td><%= course.getCourseName() %></td>
                                 <td><%= course.getStartDate()%></td>
+                                <td><button type="submit" name="coursecode" value="<%= course.getCourseCode() %>">&times;</button></td>
                             </tr>
                         <% } %>
                     <% } %>
                 </tbody>
             </table>
-            <br>
-            <input type="submit" value="Elimina selezionati">
-            
         </form>
        </div>
 
@@ -64,6 +66,6 @@ List<Course> courses = cBC.getAll();
     
     } 
       %>
-
+</div>
 </body>
 </html>

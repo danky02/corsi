@@ -17,24 +17,113 @@ if (session.getAttribute("username") != null) {
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/style.css">
 <script src="js/validazione.js"></script>
+<script>
+	$(function() {
+		$('#dp').datepicker({ 
+			format: 'dd/mm/yyyy', 
+			autoclose: 'true', 
+			startDate: '01/01/1900', 
+			endDate: new Date()
+		}).on('changeDate', function(e){
+			$('#form').bootstrapValidator('revalidateField', 'startdate');
+		});
+	});
+</script>
+<script>
+	$(function() {
+		$('#dp2').datepicker({ 
+			format: 'dd/mm/yyyy', 
+			autoclose: 'true', 
+			startDate: '01/01/1900', 
+			endDate: new Date()
+		}).on('changeDate', function(e){
+			$('#form').bootstrapValidator('revalidateField', 'enddate');
+		});
+	});
+</script>
 </head>
 <body>
 	<jsp:include page="navbar.jsp"/>
 	<div class="container">
-	<h1>Inserimento corso</h1>
-	<form action="/<%=application.getServletContextName()%>/courseInsert" method="post">
-		<label for="nome_corso">Nome del corso:</label>
-		<input type="text" name="nome_corso" id="nome_corso"><br><br>
-		<label for="inizio_corso">Inizio del corso:</label>
-		<input type="date" name="inizio_corso" id="inizio_corso"><br><br>
-		<label for="fine_corso">Fine del corso:</label>
-		<input type="date" name="fine_corso" id="fine_corso"><br><br>
-		<label for="costo_corso">Costo del corso:</label>
-		<input type="number" name="costo_corso" id="costo_corso"><br><br>
-		<label for="stanza_corso">Stanza:</label><br>
-		<input type="text" name="numero_stanza" id="numero_stanza"><br><br>
-		<input type="submit" value="Inserisci corso">
-	</form>
+		<header class="page-header">
+			<h3>Inserisci nuovo corso</h3>
+		</header>
+
+		<form id="form" action="/<%=application.getServletContextName()%>/courseInsert" method="post" class="form-horizontal">
+			<!-- Name -->
+			<div class="form-group">
+				<label class="col-md-2 control-label">Nome Corso</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-list-alt"></i>
+						</span>
+						<input type="text" placeholder="Nome..." name="course_name" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 error" id="infoStudentName"></div>
+			</div>
+			<!-- Start Date -->
+			<div class="form-group">
+				<label class="col-md-2 control-label">Data Inizio</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group date" id="dp">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</span>
+						<input type="text" placeholder="Data inizio..." name="startdate" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 error" id="infoStartDate"></div>
+			</div>
+			<!-- End Date -->
+			<div class="form-group">
+				<label class="col-md-2 control-label">Data Fine</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group date" id="dp2">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</span>
+						<input type="text" placeholder="Data fine..." name="enddate" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 error" id="infoEndDate"></div>
+			</div>
+			<!-- Cost -->
+			<div class="form-group">
+				<label class="col-md-2 control-label">Costo</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-euro"></i>
+						</span>
+						<input type="number" placeholder="Costo..." name="cost" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 error" id="infoCost"></div>
+			</div>
+			<!-- Classroom -->
+			<div class="form-group">
+				<label class="col-md-2 control-label">Classe</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-home"></i>
+						</span>
+						<input type="text" placeholder="Aula..." name="classroom" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-6 error" id="infoClassroom"></div>
+			</div>
+						
+			<!-- Submit button -->
+			<div class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<button type="submit" class="btn btn-primary">Registra corso&nbsp;&nbsp;<span class="glyphicon glyphicon-send"></span>
+					</button>
+				</div>
+			</div>
+		</form>
 	</div>
 </body>
 </html>
