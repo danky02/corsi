@@ -1,4 +1,4 @@
-package corsi.architecture.dao;
+package test.corsi.architecture.dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,6 +9,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import corsi.architecture.dao.CourseDAO;
+import corsi.architecture.dao.DAOException;
 import corsi.architecture.dbaccess.DBAccess;
 import corsi.businesscomponent.model.Course;
 
