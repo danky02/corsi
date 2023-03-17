@@ -61,7 +61,7 @@ if (session.getAttribute("username") != null) {
 					</strong>
 				</p>
 				<p>
-					Durata media dei corsi: <strong> <%=af.getAverageDuration()%>
+					Durata media dei corsi: <strong> <%=String.format("%.2f", af.getAverageDuration())%>
 					</strong>
 				</p>
 				<p>

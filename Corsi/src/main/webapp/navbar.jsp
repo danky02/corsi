@@ -33,7 +33,10 @@
 								<a href="studentInsert.jsp">Inserisci Corsista</a>
 							</li>
 							<li>
-								<a href="courseInsert.jsp">Gestione Corsi</a>
+								<a href="courseInsert.jsp">Inserisci Corso</a>
+							</li>
+							<li>
+								<a href="EliminaCorsi.jsp">Elimina Corso</a>
 							</li>
 						</ul>
 					</li>
