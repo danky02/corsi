@@ -260,5 +260,11 @@ public class AdminFacade {
 		result = courseBC.getCoursesByStudent(student);
 		return result;
 	}
+	public List<Course> getAllCourses() throws ClassNotFoundException, IOException, DAOException {
+		List<Course> CoursesList = new ArrayList<Course>();
+		courseBC = new CourseBC();
+		CoursesList = courseBC.getAll();
+		return CoursesList;
+	}
 	
 }
