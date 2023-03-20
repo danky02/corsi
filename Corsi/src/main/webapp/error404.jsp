@@ -24,6 +24,7 @@
 				<p>Per segnalare l'eventuale problema contattare l'amministratore:</p>
 				<a href="mailto:admin@site.com">admin@site.com</a>
 				<p>
+				<br>
 					<button onclick="window.history.back()" class="btn btn-default">Indietro</button>
 				</p>
 			</div>

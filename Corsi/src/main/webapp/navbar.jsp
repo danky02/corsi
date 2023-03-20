@@ -25,6 +25,7 @@
 		    		} else {
 		    	%>
 		    	<ul class="nav navbar-nav">
+			        <li><a href="courseAttendance.jsp"><span class="glyphicon glyphicon-user"></span>&nbsp;Lista Corsisti</a></li>
 			        <li><a href="statistiche.jsp"><span class="glyphicon glyphicon-stats"></span>&nbsp;Statistiche</a></li>
 					<li class="dropdown">
 						<a href="#" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span>&nbsp;Gestione&nbsp;<span class="caret"></span></a>

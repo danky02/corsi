@@ -59,7 +59,7 @@
 	<div class="row">
 		<div class="col-md-4 col-md-off-set-1">
 			<button type="submit" class="btn btn-info">
-		 		Modifica&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></span>
+		 		Modifica&nbsp;&nbsp;<span class="glyphicon glyphicon-send"></span>
 		 	</button>
 		</div>
 	</div>
